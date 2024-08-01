@@ -1,0 +1,245 @@
+<?eclipse.ant.import?>
+
+<project basedir="." default="build" name="SEUtils">
+
+	<!-- Properties -->
+	<property environment="env" />
+	<property name="ECLIPSE_HOME" value="../../" />
+
+	<property name="junit.output.dir" value="junit" />
+	<property name="source.dir" location="src" />
+	<property name="testsource.dir" location="test" />
+	<property name="build.dir" location="bin" />
+	<property name="release.dir" location="V:/03_FB_EE/14_IE/08_Anwendungsprogramme/IBW_Iltis/WinIBW3/Skripte" />
+	<property name="lib.dir" value="lib" />
+	<property name="GND.rel.dir" value="../GND/rel" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.8" />
+	<property name="source" value="1.8" />
+
+	<!-- Pfade -->
+	<path id="JUnit 4.libraryclasspath">
+		<pathelement location="${ECLIPSE_HOME}/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/junit.jar" />
+		<pathelement location="${ECLIPSE_HOME}/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar" />
+	</path>
+
+	<path id="music.classpath">
+		<pathelement location="${build.dir}" />
+		<pathelement location="../GND/bin" />
+		<pathelement location="../zmarc/bin" />
+		<path refid="JUnit 4.libraryclasspath" />
+	</path>
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+
+	<!-- Targets -->
+	<target name="init">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${release.dir}" />
+		<copy includeemptydirs="false" todir="${build.dir}">
+			<fileset dir="${source.dir}">
+				<exclude name="**/*.uad" />
+				<exclude name="**/*.ucd" />
+				<exclude name="**/*.uld" />
+				<exclude name="**/*.upd" />
+				<exclude name="**/*.cop" />
+				<exclude name="**/*.udd" />
+				<exclude name="**/*.uod" />
+				<exclude name="**/*.usd" />
+				<exclude name="**/*.utd" />
+				<exclude name="**/*.uud" />
+				<exclude name="**/*.ame" />
+				<exclude name="**/*.odd" />
+				<exclude name="**/*.ead" />
+				<exclude name="**/*.ecd" />
+				<exclude name="**/*.eld" />
+				<exclude name="**/*.epd" />
+				<exclude name="**/*.edd" />
+				<exclude name="**/*.eod" />
+				<exclude name="**/*.esd" />
+				<exclude name="**/*.etd" />
+				<exclude name="**/*.eud" />
+				<exclude name="**/*.eame" />
+				<exclude name="**/*.urd*.uml" />
+				<exclude name="**/*.ecore" />
+				<exclude name="**/*.urd" />
+				<exclude name="**/*.uml" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<copy includeemptydirs="false" todir="${build.dir}">
+			<fileset dir="${testsource.dir}">
+				<exclude name="**/*.uad" />
+				<exclude name="**/*.ucd" />
+				<exclude name="**/*.uld" />
+				<exclude name="**/*.upd" />
+				<exclude name="**/*.cop" />
+				<exclude name="**/*.udd" />
+				<exclude name="**/*.uod" />
+				<exclude name="**/*.usd" />
+				<exclude name="**/*.utd" />
+				<exclude name="**/*.uud" />
+				<exclude name="**/*.ame" />
+				<exclude name="**/*.odd" />
+				<exclude name="**/*.ead" />
+				<exclude name="**/*.ecd" />
+				<exclude name="**/*.eld" />
+				<exclude name="**/*.epd" />
+				<exclude name="**/*.edd" />
+				<exclude name="**/*.eod" />
+				<exclude name="**/*.esd" />
+				<exclude name="**/*.etd" />
+				<exclude name="**/*.eud" />
+				<exclude name="**/*.eame" />
+				<exclude name="**/*.urd*.uml" />
+				<exclude name="**/*.ecore" />
+				<exclude name="**/*.urd" />
+				<exclude name="**/*.uml" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="build" depends="build-project" />
+
+	<target name="build-project" depends="init">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="${build.dir}" source="${source}" target="${target}">
+			<src path="${source.dir}" />
+			<classpath refid="music.classpath" />
+		</javac>
+		<javac debug="true" debuglevel="${debuglevel}" destdir="${build.dir}" source="${source}" target="${target}">
+			<src path="${testsource.dir}" />
+			<classpath refid="music.classpath" />
+		</javac>
+	</target>
+
+	<target name="dist" depends="build" description="Verpackt alles in Anwendungen">
+		<copy todir="${release.dir}/lib" description="Kopiert von lib nach V:.../lib">
+			<fileset dir="${lib.dir}" />
+		</copy>
+		<copy todir="${release.dir}/lib" description="Kopiert von GND/rel nach V:.../lib">
+			<fileset dir="${GND.rel.dir}" />
+		</copy>
+		<jar destfile="${release.dir}/Suche.jar">
+			<fileset dir="${build.dir}" excludes="**/*Test.class, **/Test*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="de.dnb.ie.search.SearchController" />
+			</manifest>
+		</jar>
+		<jar destfile="${release.dir}/Fachreferenten.jar">
+			<fileset dir="${build.dir}" excludes="**/*Test.class, **/Test*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="de.dnb.ie.fachreferententool.Controller" />
+				<attribute name="Class-Path" value="lib/GND.jar lib/jcalendar-1.4.jar" />
+			</manifest>
+		</jar>
+		<jar destfile="${release.dir}/Mx.jar">
+			<fileset dir="${build.dir}" excludes="**/*Test.class, **/Test*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="de.dnb.ie.mx.MxController" />
+				<attribute name="Class-Path" value="lib/GND.jar lib/json-20190722.jar" />
+			</manifest>
+		</jar>
+		<jar destfile="${release.dir}/Automatische.jar">
+			<fileset dir="${build.dir}" excludes="**/*Test.class, **/Test*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="de.dnb.ie.automatic.Autom_01" />
+			</manifest>
+		</jar>
+		<jar destfile="${release.dir}/Einzelablage.jar">
+			<fileset dir="${build.dir}" excludes="**/*Test.class, **/Test*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="de.dnb.ie.einzelablage.EinzelClient" />
+				<attribute name="Class-Path" value="lib/GND.jar lib/marc4j-2.6.0.jar" />
+			</manifest>
+		</jar>
+		<jar destfile="${release.dir}/lib/EinzelServer.jar">
+			<fileset dir="${build.dir}" excludes="**/*Test.class, **/Test*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="de.dnb.ie.einzelablage.EinzelServer" />
+				<attribute name="Class-Path" value="GND.jar marc4j-2.6.0.jar" />
+			</manifest>
+		</jar>
+		<jar destfile="D:/Einzelablage.jar">
+			<fileset dir="${build.dir}" excludes="**/*Test.class, **/Test*.class" />
+			<!-- Alle jar.-Dateien in /lib entpacken und gleich
+													wieder verpacken: -->
+			<zipgroupfileset dir="${lib.dir}" excludes="ant.jar" />
+			<manifest>
+				<attribute name="Main-Class" value="de.dnb.ie.einzelablage.Einzel" />
+			</manifest>
+		</jar>
+		<jar destfile="${release.dir}/PrettyPrint.jar">
+			<fileset dir="${build.dir}" excludes="**/*Test.class, **/Test*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="de.dnb.ee.pretty.PrettyPrint" />
+				<attribute name="Class-Path" value="lib/GND.jar" />
+			</manifest>
+		</jar>
+		<jar destfile="${release.dir}/PrettyGUI.jar">
+					<fileset dir="${build.dir}" excludes="**/*Test.class, **/Test*.class" />
+					<manifest>
+						<attribute name="Main-Class" value="de.dnb.ee.pretty.PrettyGUI" />
+						<attribute name="Class-Path" value="lib/GND.jar" />
+					</manifest>
+				</jar>
+		<jar destfile="${release.dir}/SWDView.jar">
+			<fileset dir="${build.dir}" excludes="**/*Test.class, **/Test*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="de.dnb.ie.swd.SimpleViewer" />
+				<attribute name="Class-Path" value="lib/GND.jar" />
+			</manifest>
+		</jar>
+		<jar destfile="${release.dir}/GesamtBewertung.jar">
+			<fileset dir="${build.dir}" excludes="**/*Test.class, **/Test*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="de.dnb.ie.automatic.Gesamtbewertung" />
+				<attribute name="Class-Path" value="lib/GND.jar" />
+			</manifest>
+		</jar>
+		<jar destfile="${release.dir}/MarcViewer.jar">
+			<fileset dir="${build.dir}" excludes="**/*Test.class, **/Test*.class" />
+			<!-- Alle jar.-Dateien in /lib entpacken und gleich
+										wieder verpacken: -->
+			<!--
+			<zipgroupfileset dir="${lib.dir}" excludes="ant.jar,GND.jar" />
+			-->
+			<manifest>
+				<attribute name="Main-Class" value="de.dnb.marcViewer.MarcController" />
+				<attribute name="Class-Path" value="lib/GND.jar lib/marc4j-2.7.2.jar" />
+			</manifest>
+		</jar>
+	</target>
+
+
+	<target name="-allTests" depends="build">
+		<mkdir dir="${junit.output.dir}" />
+		<junit fork="yes" printsummary="withOutAndErr">
+			<formatter type="xml" />
+			<test name="de.dnb.music.AllTests" todir="${junit.output.dir}" />
+			<classpath refid="music.classpath" />
+		</junit>
+	</target>
+
+	<target name="junitreport" depends="-allTests">
+		<junitreport todir="${junit.output.dir}">
+			<fileset dir="${junit.output.dir}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${junit.output.dir}" />
+		</junitreport>
+	</target>
+
+	<target name="test" depends="build">
+		<junit>
+			<classpath refid="music.classpath" />
+			<formatter type="brief" usefile="false" />
+			<batchtest>
+				<fileset dir="${build.dir}" includes="**/*Test.class" />
+			</batchtest>
+		</junit>
+	</target>
+</project>
