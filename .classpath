@@ -8,34 +8,19 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="forms-1.3.0.jar" sourcepath="forms-1.3.0-src.zip"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/GND"/>
-	<classpathentry kind="lib" path="/GND/lib/commons-collections4-4.1.jar"/>
-	<classpathentry kind="lib" path="/GND/lib/poi-3.15.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/GND/lib/poi-bin-3.15-20160924.zip!/poi-3.15/docs/apidocs"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/GND/lib/poi-ooxml-3.15.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/GND/lib/poi-bin-3.15-20160924.zip!/poi-3.15/docs/apidocs"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/GND/lib/poi-ooxml-schemas-3.15.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/GND/lib/poi-bin-3.15-20160924.zip!/poi-3.15/docs/apidocs"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/GND/lib/poi-scratchpad-3.15.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/GND/lib/poi-bin-3.15-20160924.zip!/poi-3.15/docs/apidocs"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/GND/lib/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="lib" path="lib/jcalendar-1.4.jar" sourcepath="lib/jcalendar-1.4.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/SEUtils/lib/jcalendar-1.4.zip!/doc/api"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/zmarc"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/pica4J"/>
+	<classpathentry kind="lib" path="lib/marc4j-2.7.2.jar"/>
+	<classpathentry kind="lib" path="/pica4J/lib/commons-collections4-4.1.jar"/>
+	<classpathentry kind="lib" path="/pica4J/lib/poi-3.15.jar"/>
+	<classpathentry kind="lib" path="/pica4J/lib/poi-bin-3.15-20160924.zip"/>
+	<classpathentry kind="lib" path="/pica4J/lib/poi-ooxml-3.15.jar"/>
+	<classpathentry kind="lib" path="/pica4J/lib/poi-ooxml-schemas-3.15.jar"/>
+	<classpathentry kind="lib" path="/pica4J/lib/poi-scratchpad-3.15.jar"/>
+	<classpathentry kind="lib" path="/pica4J/lib/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
