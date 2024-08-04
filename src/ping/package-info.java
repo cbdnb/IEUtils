@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author baumann
- *
- */
-package ping;
