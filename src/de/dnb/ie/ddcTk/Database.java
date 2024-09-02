@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
-import de.dnb.basics.applicationComponents.FileUtils;
+import de.dnb.basics.applicationComponents.MyFileUtils;
 import de.dnb.basics.applicationComponents.strings.StringUtils;
 import de.dnb.basics.applicationComponents.tuples.Pair;
 import de.dnb.basics.collections.ListMultimap;
@@ -63,7 +63,7 @@ public class Database {
 		}
 		ddc2Det34 = (ListMultimap<String, Pair<String, String>>) objectInputStream
 				.readObject();
-		FileUtils.safeClose(objectInputStream);
+		MyFileUtils.safeClose(objectInputStream);
 	}
 
 	/**

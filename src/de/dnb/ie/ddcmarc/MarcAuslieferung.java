@@ -18,7 +18,7 @@ import org.marc4j.marc.Record;
 import org.marc4j.marc.VariableField;
 
 import de.dnb.basics.Constants;
-import de.dnb.basics.applicationComponents.FileUtils;
+import de.dnb.basics.applicationComponents.MyFileUtils;
 import de.dnb.basics.marc.DDCMarcUtils;
 import de.dnb.basics.marc.MarcUtils;
 import de.dnb.basics.utils.TimeUtils;
@@ -62,10 +62,10 @@ public class MarcAuslieferung {
 	private static String localFileNameXML = LOCAL_FOLDER + OUT_FILE_XML;
 
 	public static void main(final String[] args) throws IOException {
-		FileUtils.ensurePathExists(localFileNameGzMarc);
-		final PrintStream marcPS = FileUtils
+		MyFileUtils.ensurePathExists(localFileNameGzMarc);
+		final PrintStream marcPS = MyFileUtils
 				.getGZipPrintStream(localFileNameGzMarc);
-		final PrintStream xmlgzPS = FileUtils
+		final PrintStream xmlgzPS = MyFileUtils
 				.getGZipPrintStream(localFileNameXML);
 		final MarcStreamWriter marcStreamWriter = new MarcStreamWriter(marcPS,
 				"UTF-8");
@@ -126,10 +126,10 @@ public class MarcAuslieferung {
 			}
 		}
 
-		FileUtils.safeClose(input);
+		MyFileUtils.safeClose(input);
 		marcStreamWriter.close();
 
-		FileUtils.safeClose(readableStream);
+		MyFileUtils.safeClose(readableStream);
 		xmlWriter.close();
 
 		final Path targetDir = Files.createDirectory(Paths.get(V_FOLDER));

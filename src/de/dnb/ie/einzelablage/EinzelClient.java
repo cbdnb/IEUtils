@@ -1,6 +1,6 @@
 package de.dnb.ie.einzelablage;
 
-import de.dnb.basics.applicationComponents.FileUtils;
+import de.dnb.basics.applicationComponents.MyFileUtils;
 import de.dnb.basics.clientServer.Client;
 
 public class EinzelClient extends Client {
@@ -19,7 +19,7 @@ public class EinzelClient extends Client {
 //		 + ";D:\\eclipse-java-kepler-R-win32\\workspace\\zmarc\\bin",
 //		 "de.dnb.ie.einzelablage.EinzelServer");
 
-		String exDir = FileUtils.getExecutionDirectory();
+		String exDir = MyFileUtils.getExecutionDirectory();
 		System.err.println(exDir);
 		client = new EinzelClient(4711, null, exDir + "\\" + "EinzelServer.jar");
 		

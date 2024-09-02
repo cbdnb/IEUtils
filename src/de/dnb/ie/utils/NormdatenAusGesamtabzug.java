@@ -8,7 +8,7 @@ import java.text.DateFormat;
 import java.util.Calendar;
 
 import de.dnb.basics.Constants;
-import de.dnb.basics.applicationComponents.FileUtils;
+import de.dnb.basics.applicationComponents.MyFileUtils;
 import de.dnb.basics.filtering.RangeCheckUtils;
 import de.dnb.gnd.utils.RecordUtils;
 
@@ -41,70 +41,70 @@ public class NormdatenAusGesamtabzug {
 
 	public static void copyAuthorityData(final String from) throws IOException {
 		RangeCheckUtils.assertReferenceParamNotNull("from", from);
-		final BufferedReader in = FileUtils.getGZipReader(from);
+		final BufferedReader in = MyFileUtils.getGZipReader(from);
 
 		final String gndFull = Constants.GND;
 		final File gndFullFile = new File(gndFull);
 		if (gndFullFile.exists())
 			throw new IllegalArgumentException(
 					"Datei " + gndFull + " existiert schon");
-		final PrintStream outFull = FileUtils.getGZipPrintStream(gndFull);
+		final PrintStream outFull = MyFileUtils.getGZipPrintStream(gndFull);
 
 		final String gndP = Constants.Tp;
 		final File gndPFile = new File(gndP);
 		if (gndPFile.exists())
 			throw new IllegalArgumentException(
 					"Datei " + gndP + " existiert schon");
-		final PrintStream outP = FileUtils.getGZipPrintStream(gndP);
+		final PrintStream outP = MyFileUtils.getGZipPrintStream(gndP);
 
 		final String gndN = Constants.ORDNER_ABZUG_LOKAL + "DNBGND_n.dat.gz";
 		final File gndNFile = new File(gndN);
 		if (gndNFile.exists())
 			throw new IllegalArgumentException(
 					"Datei " + gndN + " existiert schon");
-		final PrintStream outN = FileUtils.getGZipPrintStream(gndN);
+		final PrintStream outN = MyFileUtils.getGZipPrintStream(gndN);
 
 		final String gndB = Constants.Tb;
 		final File gndBFile = new File(gndB);
 		if (gndBFile.exists())
 			throw new IllegalArgumentException(
 					"Datei " + gndB + " existiert schon");
-		final PrintStream outB = FileUtils.getGZipPrintStream(gndB);
+		final PrintStream outB = MyFileUtils.getGZipPrintStream(gndB);
 
 		final String gndF = Constants.Tf;
 		final File gndFFile = new File(gndF);
 		if (gndFFile.exists())
 			throw new IllegalArgumentException(
 					"Datei " + gndF + " existiert schon");
-		final PrintStream outF = FileUtils.getGZipPrintStream(gndF);
+		final PrintStream outF = MyFileUtils.getGZipPrintStream(gndF);
 
 		final String gndU = Constants.Tu;
 		final File gndUFile = new File(gndU);
 		if (gndUFile.exists())
 			throw new IllegalArgumentException(
 					"Datei " + gndU + " existiert schon");
-		final PrintStream outU = FileUtils.getGZipPrintStream(gndU);
+		final PrintStream outU = MyFileUtils.getGZipPrintStream(gndU);
 
 		final String gndG = Constants.Tg;
 		final File gndGFile = new File(gndG);
 		if (gndGFile.exists())
 			throw new IllegalArgumentException(
 					"Datei " + gndG + " existiert schon");
-		final PrintStream outG = FileUtils.getGZipPrintStream(gndG);
+		final PrintStream outG = MyFileUtils.getGZipPrintStream(gndG);
 
 		final String gndS = Constants.Ts;
 		final File gndSFile = new File(gndS);
 		if (gndSFile.exists())
 			throw new IllegalArgumentException(
 					"Datei " + gndS + " existiert schon");
-		final PrintStream outS = FileUtils.getGZipPrintStream(gndS);
+		final PrintStream outS = MyFileUtils.getGZipPrintStream(gndS);
 
 		final String gndC = Constants.Tc;
 		final File gndCFile = new File(gndC);
 		if (gndCFile.exists())
 			throw new IllegalArgumentException(
 					"Datei " + gndC + " existiert schon");
-		final PrintStream outC = FileUtils.getGZipPrintStream(gndC);
+		final PrintStream outC = MyFileUtils.getGZipPrintStream(gndC);
 
 		final String gndOhne = Constants.ORDNER_ABZUG_LOKAL
 				+ "DNBGND_kein_Typ.dat.gz";
@@ -112,7 +112,7 @@ public class NormdatenAusGesamtabzug {
 		if (gndOhneFile.exists())
 			throw new IllegalArgumentException(
 					"Datei " + gndOhne + " existiert schon");
-		final PrintStream outOhne = FileUtils.getGZipPrintStream(gndOhne);
+		final PrintStream outOhne = MyFileUtils.getGZipPrintStream(gndOhne);
 
 		String line = in.readLine();
 		while (line != null) {
@@ -141,17 +141,17 @@ public class NormdatenAusGesamtabzug {
 			line = in.readLine();
 
 		}
-		FileUtils.safeClose(in);
-		FileUtils.safeClose(outFull);
-		FileUtils.safeClose(outP);
-		FileUtils.safeClose(outN);
-		FileUtils.safeClose(outB);
-		FileUtils.safeClose(outF);
-		FileUtils.safeClose(outU);
-		FileUtils.safeClose(outG);
-		FileUtils.safeClose(outS);
-		FileUtils.safeClose(outC);
-		FileUtils.safeClose(outOhne);
+		MyFileUtils.safeClose(in);
+		MyFileUtils.safeClose(outFull);
+		MyFileUtils.safeClose(outP);
+		MyFileUtils.safeClose(outN);
+		MyFileUtils.safeClose(outB);
+		MyFileUtils.safeClose(outF);
+		MyFileUtils.safeClose(outU);
+		MyFileUtils.safeClose(outG);
+		MyFileUtils.safeClose(outS);
+		MyFileUtils.safeClose(outC);
+		MyFileUtils.safeClose(outOhne);
 
 	}
 }

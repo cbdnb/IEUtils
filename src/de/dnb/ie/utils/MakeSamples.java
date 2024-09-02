@@ -7,7 +7,7 @@ import java.io.PrintStream;
 import java.util.Random;
 
 import de.dnb.basics.Constants;
-import de.dnb.basics.applicationComponents.FileUtils;
+import de.dnb.basics.applicationComponents.MyFileUtils;
 import de.dnb.basics.filtering.RangeCheckUtils;
 import de.dnb.basics.utils.TimeUtils;
 import de.dnb.gnd.utils.RecordUtils;
@@ -45,7 +45,7 @@ public class MakeSamples {
 	private static void copyGND(final String from) throws IOException {
 
 		RangeCheckUtils.assertReferenceParamNotNull("from", from);
-		final BufferedReader in = FileUtils.getGZipReader(from);
+		final BufferedReader in = MyFileUtils.getGZipReader(from);
 
 		int counterGNDTitle = 0;
 		int counterGND = 0;
@@ -64,14 +64,14 @@ public class MakeSamples {
 		if (gndFile.exists())
 			throw new IllegalArgumentException(
 					"Datei " + gndSample + " existiert schon");
-		final PrintStream outGND = FileUtils.getGZipPrintStream(gndSample);
+		final PrintStream outGND = MyFileUtils.getGZipPrintStream(gndSample);
 
 		final String titleGNDSample = Constants.GND_TITEL_STICHPROBE;
 		final File titleGNDFile = new File(titleGNDSample);
 		if (titleGNDFile.exists())
 			throw new IllegalArgumentException(
 					"Datei " + titleGNDSample + " existiert schon");
-		final PrintStream outTitleGND = FileUtils
+		final PrintStream outTitleGND = MyFileUtils
 				.getGZipPrintStream(titleGNDSample);
 
 		String line = in.readLine();
@@ -98,9 +98,9 @@ public class MakeSamples {
 			line = in.readLine();
 		} // while
 
-		FileUtils.safeClose(in);
-		FileUtils.safeClose(outGND);
-		FileUtils.safeClose(outTitleGND);
+		MyFileUtils.safeClose(in);
+		MyFileUtils.safeClose(outGND);
+		MyFileUtils.safeClose(outTitleGND);
 
 		System.out.println("Zahl gesamt: " + counterGNDTitle);
 		System.out.println("Zahl GND: " + counterGND);
@@ -110,7 +110,7 @@ public class MakeSamples {
 	public static void copyTiteldaten(final String from) throws IOException {
 
 		RangeCheckUtils.assertReferenceParamNotNull("from", from);
-		final BufferedReader in = FileUtils.getGZipReader(from);
+		final BufferedReader in = MyFileUtils.getGZipReader(from);
 
 		final Random titleRandom = new Random();
 		int delta = nextRand(titleRandom);
@@ -122,7 +122,7 @@ public class MakeSamples {
 		if (titleFile.exists())
 			throw new IllegalArgumentException(
 					"Datei " + titleSample + " existiert schon");
-		final PrintStream outTitle = FileUtils.getGZipPrintStream(titleSample);
+		final PrintStream outTitle = MyFileUtils.getGZipPrintStream(titleSample);
 
 		String line = in.readLine();
 		while (line != null) {
@@ -137,8 +137,8 @@ public class MakeSamples {
 			line = in.readLine();
 		}
 
-		FileUtils.safeClose(in);
-		FileUtils.safeClose(outTitle);
+		MyFileUtils.safeClose(in);
+		MyFileUtils.safeClose(outTitle);
 		System.out.println("Zahl Titel: " + counterTitle);
 	}
 

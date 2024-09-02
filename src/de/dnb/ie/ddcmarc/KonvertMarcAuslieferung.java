@@ -8,7 +8,7 @@ import org.marc4j.MarcReader;
 import org.marc4j.MarcStreamReader;
 import org.marc4j.marc.Record;
 
-import de.dnb.basics.applicationComponents.FileUtils;
+import de.dnb.basics.applicationComponents.MyFileUtils;
 import de.dnb.basics.marc.MarcUtils;
 
 /**
@@ -21,7 +21,7 @@ import de.dnb.basics.marc.MarcUtils;
 public class KonvertMarcAuslieferung {
 
 	public static void main(final String[] args) throws IOException {
-		final GZIPInputStream gzipInputStream = FileUtils
+		final GZIPInputStream gzipInputStream = MyFileUtils
 				.getGZipInputStream(MarcAuslieferung.localFileNameGzMarc);
 		final MarcReader reader = new MarcStreamReader(gzipInputStream);
 
@@ -34,7 +34,7 @@ public class KonvertMarcAuslieferung {
 			readableStream.println(MarcUtils.readableFormat(record));
 
 		}
-		FileUtils.safeClose(readableStream);
+		MyFileUtils.safeClose(readableStream);
 
 		System.out.println("Anzahl: " + i);
 
