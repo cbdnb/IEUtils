@@ -40,10 +40,8 @@ public class MarcAuslieferung {
 
 	private static final String OUT_FILE_RUMPF = "DDCDeutsch_cc-liz_Auszug_marc";
 
-	private static final String OUT_FILE_MARC = OUT_FILE_RUMPF + "_"
-			+ TimeUtils.getToday() + EXTENSION_MRC;
-	private static final String OUT_FILE_XML = OUT_FILE_RUMPF + "xml" + "_"
-			+ TimeUtils.getToday() + EXTENSION_XML;
+	private static final String OUT_FILE_MARC = OUT_FILE_RUMPF + "_" + TimeUtils.getToday() + EXTENSION_MRC;
+	private static final String OUT_FILE_XML = OUT_FILE_RUMPF + "xml" + "_" + TimeUtils.getToday() + EXTENSION_XML;
 
 	/**
 	 * D:/Normdaten/marc_shortened
@@ -52,8 +50,7 @@ public class MarcAuslieferung {
 
 	private static final String TOP_FOLDER = "V:/Anwendungen/DDC/Daten/cc-lizenzierterAuszug_DDC/";
 
-	private static final String V_FOLDER = TOP_FOLDER
-			+ TimeUtils.getActualYear() + "_DDC23_" + TimeUtils.getToday()
+	private static final String V_FOLDER = TOP_FOLDER + TimeUtils.getActualYear() + "_DDC23_" + TimeUtils.getToday()
 			+ "/";
 
 	static final String LOCAL_OUT_FILE_NAME = LOCAL_FOLDER + OUT_FILE_RUMPF;
@@ -63,20 +60,17 @@ public class MarcAuslieferung {
 
 	public static void main(final String[] args) throws IOException {
 		MyFileUtils.ensurePathExists(localFileNameGzMarc);
-		final PrintStream marcPS = MyFileUtils
-				.getGZipPrintStream(localFileNameGzMarc);
-		final PrintStream xmlgzPS = MyFileUtils
-				.getGZipPrintStream(localFileNameXML);
-		final MarcStreamWriter marcStreamWriter = new MarcStreamWriter(marcPS,
-				"UTF-8");
-		final MarcXmlWriter xmlWriter = new MarcXmlWriter(xmlgzPS, "UTF-8",
-				true);
+		System.out.println(localFileNameGzMarc);
+		final PrintStream marcPS = MyFileUtils.getGZipPrintStream(localFileNameGzMarc);
+		final PrintStream xmlgzPS = MyFileUtils.getGZipPrintStream(localFileNameXML);
+		System.out.println(localFileNameXML);
+		final MarcStreamWriter marcStreamWriter = new MarcStreamWriter(marcPS, "UTF-8");
+		final MarcXmlWriter xmlWriter = new MarcXmlWriter(xmlgzPS, "UTF-8", true);
 
 		final InputStream input = new FileInputStream(IN_FILE);
 		final MarcReader marcReader = new MarcXmlReader(input);
 
-		final PrintStream readableStream = new PrintStream(
-				LOCAL_OUT_FILE_NAME + ".txt");
+		final PrintStream readableStream = new PrintStream(LOCAL_OUT_FILE_NAME + ".txt");
 
 		int i = 0;
 
@@ -87,10 +81,8 @@ public class MarcAuslieferung {
 				if (DDCMarcUtils.isInternalAddTable(record))
 					continue;
 
-				final List<VariableField> fields253 = record
-						.getVariableFields("253");
-				final List<VariableField> fields7XX = MarcUtils
-						.getFieldsBetween(record, "700", "754");
+				final List<VariableField> fields253 = record.getVariableFields("253");
+				final List<VariableField> fields7XX = MarcUtils.getFieldsBetween(record, "700", "754");
 
 				MarcUtils.removeFieldsGreaterThanTag(record, "153");
 
@@ -118,8 +110,7 @@ public class MarcAuslieferung {
 				final Record normalizedRecord =
 						// record;
 						MarcUtils.normalize(record);
-				readableStream
-						.println(MarcUtils.readableFormat(normalizedRecord));
+				readableStream.println(MarcUtils.readableFormat(normalizedRecord));
 				xmlWriter.write(normalizedRecord);
 				// System.err.println(normalizedRecord);
 
