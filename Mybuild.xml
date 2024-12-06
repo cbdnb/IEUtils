@@ -12,7 +12,7 @@
 	<property name="build.dir" location="bin" />
 	<property name="release.dir" location="V:/03_FB_EE/14_IE/08_Anwendungsprogramme/IBW_Iltis/WinIBW3/Skripte" />
 	<property name="lib.dir" value="lib" />
-	<property name="GND.rel.dir" value="../GND/rel" />
+	<property name="GND.rel.dir" value="../pica4J/rel" />
 	<property name="debuglevel" value="source,lines,vars" />
 	<property name="target" value="1.8" />
 	<property name="source" value="1.8" />

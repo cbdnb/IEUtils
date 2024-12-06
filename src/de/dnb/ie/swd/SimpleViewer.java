@@ -3,9 +3,11 @@
  */
 package de.dnb.ie.swd;
 
+import de.dnb.basics.applicationComponents.strings.StringUtils;
 import de.dnb.basics.utils.HTMLUtils;
 import de.dnb.basics.utils.OutputUtils;
 import de.dnb.gnd.parser.Record;
+import de.dnb.gnd.parser.RecordParser;
 import de.dnb.gnd.parser.tag.SWDTagDB;
 import de.dnb.gnd.utils.RecordUtils;
 import de.dnb.gnd.utils.formatter.HTMLFormatter;
@@ -21,15 +23,21 @@ public class SimpleViewer {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Record record = RecordUtils.readFromClip(SWDTagDB.getDB());
+		final String string = StringUtils.readClipboard();
+
+		final RecordParser parser = new RecordParser();
+		SWDTagDB db = SWDTagDB.getDB();
+		parser.setDefaultTagDB(db);
+		parser.useDefaultDB(true);
+		final Record record = parser.parse(string);
 
 		HTMLFormatter formatter = new HTMLFormatter();
-		formatter.setFontsize(15);
+		formatter.setFontsize(17);
 		HTMLHeadingBuilder htmlTitleBuilder = new HTMLHeadingBuilder() {
 
 			@Override
 			public String getHeading(Record record) {
-				return "SWD-Datensatz";
+				return "Alter Datensatz";
 			}
 		};
 

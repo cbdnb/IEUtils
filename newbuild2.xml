@@ -5,7 +5,7 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="SEUtils">
     <property environment="env"/>
-    <property name="GND.location" value="../GND"/>
+    <property name="GND.location" value="../pica4J"/>
     <property name="ECLIPSE_HOME" value="../../eclipse/"/>
     <property name="Analysen.location" value="../Analysen"/>
     <property name="zmarc.location" value="../zmarc"/>
@@ -75,11 +75,11 @@
                 <propertyref name="build.compiler"/>
             </propertyset>
         </ant>
-        <ant antfile="newbuild.xml" dir="${zmarc.location}" inheritAll="false" target="build-project">
+  <!--      <ant antfile="newbuild.xml" dir="${zmarc.location}" inheritAll="false" target="build-project">
             <propertyset>
                 <propertyref name="build.compiler"/>
             </propertyset>
-        </ant>
+        </ant>-->
     </target>
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
