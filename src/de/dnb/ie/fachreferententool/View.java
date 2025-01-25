@@ -38,30 +38,22 @@ public class View {
 	};
 
 	public View() {
-		SwingUtilities.invokeLater(() ->
-		{
+		SwingUtilities.invokeLater(() -> {
 			View.this.gui = new GUI();
 			View.this.gui.setVisible(true);
-			gui.chckbxAlleDaten.addActionListener(a ->
-			{
+			gui.chckbxAlleDaten.addActionListener(a -> {
 				invertDatum();
 			});
-			gui.btnReset.addActionListener(a ->
-			{
+			gui.btnReset.addActionListener(a -> {
 				resetAll();
 			});
-			gui.btnCheckboxenReset.addActionListener(a ->
-			{
+			gui.btnCheckboxenReset.addActionListener(a -> {
 				checkboxenSelect(false);
-				;
 			});
-			gui.btnAlleCheckboxen.addActionListener(a ->
-			{
+			gui.btnAlleCheckboxen.addActionListener(a -> {
 				checkboxenSelect(true);
-				;
 			});
-			gui.btnAbbruch.addActionListener(a ->
-			{
+			gui.btnAbbruch.addActionListener(a -> {
 				System.exit(0);
 			});
 
@@ -100,11 +92,12 @@ public class View {
 		gui.chckbxAutomSg.setSelected(select);
 		gui.chckbxZugewieseneTitel.setSelected(select);
 		gui.chckbxAutomSww.setSelected(select);
+		gui.chckbxKeineSGFreigabe.setSelected(select);
+		gui.chckbxSGFreigabe.setSelected(select);
 	}
 
 	public final void addSucheListener(final ActionListener al) {
-		SwingUtilities.invokeLater(() ->
-		{
+		SwingUtilities.invokeLater(() -> {
 			try {
 				View.this.gui.btnSuche.addActionListener(al);
 			} catch (final Exception e) {
@@ -114,13 +107,11 @@ public class View {
 	}
 
 	public final void addAbbruchListener(final ActionListener al) {
-		SwingUtilities.invokeLater(
-				() -> View.this.gui.btnAbbruch.addActionListener(al));
+		SwingUtilities.invokeLater(() -> View.this.gui.btnAbbruch.addActionListener(al));
 	}
 
 	public final void addResetListener(final ActionListener al) {
-		SwingUtilities.invokeLater(
-				() -> View.this.gui.btnReset.addActionListener(al));
+		SwingUtilities.invokeLater(() -> View.this.gui.btnReset.addActionListener(al));
 	}
 
 	public final void addMenuListener(final ActionListener al) {
@@ -153,14 +144,11 @@ public class View {
 
 	public void setStandort(String std) {
 		if (std.equals("FRANKFURT")) {
-			SwingUtilities
-					.invokeLater(() -> gui.rdbtnFrankfurt.setSelected(true));
+			SwingUtilities.invokeLater(() -> gui.rdbtnFrankfurt.setSelected(true));
 		} else if (std.equals("LEIPZIG")) {
-			SwingUtilities
-					.invokeLater(() -> gui.rdbtnLeipzig.setSelected(true));
+			SwingUtilities.invokeLater(() -> gui.rdbtnLeipzig.setSelected(true));
 		} else {
-			SwingUtilities.invokeLater(
-					() -> gui.rdbtnAlleStandorte.setSelected(true));
+			SwingUtilities.invokeLater(() -> gui.rdbtnAlleStandorte.setSelected(true));
 		}
 	}
 
@@ -193,21 +181,18 @@ public class View {
 		else
 			return TEILBESTAND.ALLE;
 	}
-	
+
 	public void setTeilbestand(String tbs) {
 		if (tbs.equals("SE")) {
-			SwingUtilities
-					.invokeLater(() -> gui.rdbtnSE.setSelected(true));
+			SwingUtilities.invokeLater(() -> gui.rdbtnSE.setSelected(true));
 		} else if (tbs.equals("FE")) {
-			SwingUtilities
-					.invokeLater(() -> gui.rdbtnFE.setSelected(true));
+			SwingUtilities.invokeLater(() -> gui.rdbtnFE.setSelected(true));
 		} else {
-			SwingUtilities.invokeLater(
-					() -> gui.rdbtnAlleBestaende.setSelected(true));
+			SwingUtilities.invokeLater(() -> gui.rdbtnAlleBestaende.setSelected(true));
 		}
 	}
 
-	// --------------------------------------
+	// -------- Checkboxen ------------------------------
 
 	public boolean useNeuansetzungen() {
 		return gui.chckbxNeuansetzungen.isSelected();
@@ -229,9 +214,16 @@ public class View {
 		return gui.chckbxAutomSww.isSelected();
 	}
 
+	public boolean useSGGFreigeben() {
+		return gui.chckbxSGFreigabe.isSelected();
+	}
+
+	public boolean useOhneSGGFreigeben() {
+		return gui.chckbxKeineSGFreigabe.isSelected();
+	}
+
 	public void setNeuansetzungen(boolean val) {
-		SwingUtilities
-				.invokeLater(() -> gui.chckbxNeuansetzungen.setSelected(val));
+		SwingUtilities.invokeLater(() -> gui.chckbxNeuansetzungen.setSelected(val));
 	}
 
 	public void setMx(boolean val) {
@@ -243,12 +235,19 @@ public class View {
 	}
 
 	public void setZugewieseneSGG(boolean val) {
-		SwingUtilities
-				.invokeLater(() -> gui.chckbxZugewieseneTitel.setSelected(val));
+		SwingUtilities.invokeLater(() -> gui.chckbxZugewieseneTitel.setSelected(val));
 	}
 
 	public void setAutomSWW(boolean val) {
 		SwingUtilities.invokeLater(() -> gui.chckbxAutomSww.setSelected(val));
+	}
+
+	public void setSGGFreigabe(boolean val) {
+		SwingUtilities.invokeLater(() -> gui.chckbxSGFreigabe.setSelected(val));
+	}
+
+	public void setOhneSGGFreigabe(boolean val) {
+		SwingUtilities.invokeLater(() -> gui.chckbxKeineSGFreigabe.setSelected(val));
 	}
 
 	// --------------------------------------------------
@@ -258,8 +257,7 @@ public class View {
 	}
 
 	private void invertDatum() {
-		SwingUtilities.invokeLater(() ->
-		{
+		SwingUtilities.invokeLater(() -> {
 			gui.dateChooserVon.setEnabled(!gui.dateChooserVon.isEnabled());
 			gui.dateChooserBis.setEnabled(!gui.dateChooserBis.isEnabled());
 			gui.lblVon.setEnabled(!gui.lblVon.isEnabled());
@@ -294,8 +292,7 @@ public class View {
 	}
 
 	private void setSyst(List<String> syst) {
-		SwingUtilities.invokeLater(() -> gui.editorPaneSyst
-				.setText(StringUtils.concatenate("\t", syst)));
+		SwingUtilities.invokeLater(() -> gui.editorPaneSyst.setText(StringUtils.concatenate("\t", syst)));
 	}
 
 	public void setSyst(String syst) {
@@ -310,8 +307,7 @@ public class View {
 	}
 
 	private void setSatzartIndices(int[] inds) {
-		SwingUtilities
-				.invokeLater(() -> gui.listSatzart.setSelectedIndices(inds));
+		SwingUtilities.invokeLater(() -> gui.listSatzart.setSelectedIndices(inds));
 	}
 
 	public void setSatzartIndices(String s) {
@@ -322,8 +318,7 @@ public class View {
 	}
 
 	public String getSatzartenIndicesString() {
-		List<Integer> selectedInds = NumberUtils
-				.toList(gui.listSatzart.getSelectedIndices());
+		List<Integer> selectedInds = NumberUtils.toList(gui.listSatzart.getSelectedIndices());
 		return StringUtils.concatenate(" ; ", selectedInds);
 	}
 
@@ -341,7 +336,7 @@ public class View {
 
 	/**
 	 * 
-	 * @return	nicht null
+	 * @return nicht null
 	 */
 	public List<String> getSGG() {
 		return gui.listSGG.getSelectedValuesList();
@@ -352,8 +347,7 @@ public class View {
 	 * @return Indizes, durch " ; " getrennt
 	 */
 	public String getSGIndices() {
-		List<Integer> selectedInds = NumberUtils
-				.toList(gui.listSGG.getSelectedIndices());
+		List<Integer> selectedInds = NumberUtils.toList(gui.listSGG.getSelectedIndices());
 		return StringUtils.concatenate(" ; ", selectedInds);
 	}
 

@@ -75,15 +75,11 @@ public class Controller {
 		if (tbs != null)
 			view.setTeilbestand(tbs);
 
-		view.setNeuansetzungen(
-				Boolean.valueOf(getValueFromProperties(SUCHE_NEUANSETZUNGEN)));
+		view.setNeuansetzungen(Boolean.valueOf(getValueFromProperties(SUCHE_NEUANSETZUNGEN)));
 		view.setMx(Boolean.valueOf(getValueFromProperties(SUCHE_MX)));
-		view.setAutomSGG(
-				Boolean.valueOf(getValueFromProperties(SUCHE_AUTOM_SG)));
-		view.setZugewieseneSGG(
-				Boolean.valueOf(getValueFromProperties(SUCHE_ZUGEORDNETE_SG)));
-		view.setAutomSWW(
-				Boolean.valueOf(getValueFromProperties(SUCHE_AUTOM_SW)));
+		view.setAutomSGG(Boolean.valueOf(getValueFromProperties(SUCHE_AUTOM_SG)));
+		view.setZugewieseneSGG(Boolean.valueOf(getValueFromProperties(SUCHE_ZUGEORDNETE_SG)));
+		view.setAutomSWW(Boolean.valueOf(getValueFromProperties(SUCHE_AUTOM_SW)));
 
 		SwingUtilities.invokeLater(() -> searcher = new Searcher(view));
 	}
@@ -97,15 +93,11 @@ public class Controller {
 			saveValueInProperties(SATZARTEN, view.getSatzartenIndicesString());
 			saveValueInProperties(TEILBEST, view.getTeilbestand().toString());
 
-			saveValueInProperties(SUCHE_NEUANSETZUNGEN,
-					Boolean.toString(view.useNeuansetzungen()));
+			saveValueInProperties(SUCHE_NEUANSETZUNGEN, Boolean.toString(view.useNeuansetzungen()));
 			saveValueInProperties(SUCHE_MX, Boolean.toString(view.useMx()));
-			saveValueInProperties(SUCHE_AUTOM_SG,
-					Boolean.toString(view.useAutomSGG()));
-			saveValueInProperties(SUCHE_ZUGEORDNETE_SG,
-					Boolean.toString(view.useZugeordnete()));
-			saveValueInProperties(SUCHE_AUTOM_SW,
-					Boolean.toString(view.useAutomSWW()));
+			saveValueInProperties(SUCHE_AUTOM_SG, Boolean.toString(view.useAutomSGG()));
+			saveValueInProperties(SUCHE_ZUGEORDNETE_SG, Boolean.toString(view.useZugeordnete()));
+			saveValueInProperties(SUCHE_AUTOM_SW, Boolean.toString(view.useAutomSWW()));
 
 			try {
 				storeProperties();
@@ -121,8 +113,8 @@ public class Controller {
 	class InfoListener implements ActionListener {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
-			OutputUtils.show("Ash nazg durbatulûk, ash nazg gimbatul,<br>"
-					+ "ash nazg thrakatulûk agh burzum-ishi krimpatul.");
+			OutputUtils.show(
+					"Ash nazg durbatulûk, ash nazg gimbatul,<br>" + "ash nazg thrakatulûk agh burzum-ishi krimpatul.");
 		}
 	}
 
@@ -157,7 +149,6 @@ public class Controller {
 
 	public void saveValueInProperties(String propertyStr, String value) {
 		props.setProperty(propertyStr, value);
-
 	}
 
 }

@@ -66,8 +66,19 @@ public class Searcher {
 	 * wird nicht ausgeführt, wenn keine sinnvolle Suchfrage möglich.
 	 */
 	private void neuansetzungen() {
-		String phrase = and(gndSystematik, ser, tbs, satzarten,
-				standortAnsetzung);
+		String phrase = and(gndSystematik, ser, tbs, satzarten, standortAnsetzung);
+		if (phrase == null)
+			return;
+		String suchstring = F + phrase;
+		clip += suchstring + "\n";
+		System.out.println(suchstring);
+	}
+
+	/**
+	 * wird nicht ausgeführt, wenn keine sinnvolle Suchfrage möglich.
+	 */
+	private void magazinOhneFreigabeSGG() {
+		String phrase = and(gndSystematik, ser, tbs, satzarten, standortAnsetzung);
 		if (phrase == null)
 			return;
 		String suchstring = F + phrase;
@@ -133,18 +144,15 @@ public class Searcher {
 		// Statusindikator für QM (5051 $a):
 		String notSGF = " not sgf [0123]";
 
-		String suchstring = F
-				+ and(bbg, icd, dsw, efa, standortAnsetzung, notSGF);
+		String suchstring = F + and(bbg, icd, dsw, efa, standortAnsetzung, notSGF);
 		clip += suchstring + "\n";
 		System.out.println(suchstring);
 	}
 
 	/**
 	 * 
-	 * @param indextyp
-	 *            nicht null
-	 * @param suchbegriff
-	 *            auch null
+	 * @param indextyp nicht null
+	 * @param suchbegriff auch null
 	 * @return Phrase wie "(dhs 510 or 520)" oder null
 	 */
 	private String machSuchFragment(String indextyp, String suchbegriff) {
@@ -168,8 +176,7 @@ public class Searcher {
 
 		String notEfa = "not efa i ";
 
-		String suchstring = F
-				+ and(bbg, ser, konfidenz, efa, standortAnsetzung, notEfa);
+		String suchstring = F + and(bbg, ser, konfidenz, efa, standortAnsetzung, notEfa);
 		clip += suchstring + "\n";
 		System.out.println(suchstring);
 	}
@@ -181,8 +188,7 @@ public class Searcher {
 		List<String> sgg = view.getSGG();
 		if (sgg.isEmpty())
 			return;
-		ArrayList<String> sggZugew = FilterUtils.map(sgg,
-				sg -> sg + standortZugew);
+		ArrayList<String> sggZugew = FilterUtils.map(sgg, sg -> sg + standortZugew);
 		String sgf = machSuchFragment("sgf", or(sggZugew));
 
 		String suchphrase = and(sgf, ser);
@@ -238,15 +244,13 @@ public class Searcher {
 		final Calendar calendar1 = view.getBis();
 		final Calendar calendar2 = view.getVon();
 		arbeitstage = TimeUtils.getWorkDaysBetween(calendar1, calendar2);
-		final ArrayList<String> listTTMMJJ = FilterUtils.map(arbeitstage,
-				TimeUtils.picaTTMMJJ);
+		final ArrayList<String> listTTMMJJ = FilterUtils.map(arbeitstage, TimeUtils.picaTTMMJJ);
 		commonDateTTMMJJ = StringUtils.replaceByWildcard(listTTMMJJ, '#');
 		if (commonDateTTMMJJ.startsWith("#")) {
 			commonDateTTMMJJ = commonDateTTMMJJ.replaceFirst("#", "[0123]");
 		}
 
-		final ArrayList<String> listJJJJMMTT = FilterUtils.map(arbeitstage,
-				TimeUtils.mxJJJJMMTT);
+		final ArrayList<String> listJJJJMMTT = FilterUtils.map(arbeitstage, TimeUtils.mxJJJJMMTT);
 		commonDateJJJJMMTT = StringUtils.replaceByWildcard(listJJJJMMTT, '#');
 		if (commonDateJJJJMMTT.startsWith("#")) {
 			commonDateJJJJMMTT = commonDateJJJJMMTT.replaceFirst("#", "[0123]");
@@ -265,8 +269,7 @@ public class Searcher {
 
 	/**
 	 * 
-	 * @param strings
-	 *            auch leer
+	 * @param strings auch leer
 	 * @return null, wenn Liste von nullen
 	 */
 	private String and(String... strings) {
@@ -306,8 +309,7 @@ public class Searcher {
 
 	/**
 	 * 
-	 * @param collection
-	 *            nicht null
+	 * @param collection nicht null
 	 * @return neue, veränderbare Liste ohne null
 	 */
 	public <E> List<E> nullFilteredList(Collection<E> collection) {
@@ -333,9 +335,29 @@ public class Searcher {
 			zugeordneteSGG();
 		if (view.useAutomSWW())
 			automSWW();
+		if (view.useSGGFreigeben()) {
+			imMagazinOhneFreigabe(true);
+		}
+		if (view.useOhneSGGFreigeben()) {
+			imMagazinOhneFreigabe(false);
+		}
 		if (!clip.isEmpty()) {
 			StringUtils.writeToClipboard(clip);
 		}
+	}
+
+	private void imMagazinOhneFreigabe(boolean mitSGG) {
+		String status = machSuchFragment("sta", "2#-##-## b");
+		String signatur = machSuchFragment("sig", "[2#]*");
+		String sgg;
+		if (mitSGG)
+			sgg = machSuchFragment("DHS", or(view.getSGG()));
+		else
+			sgg = machSuchFragment("NOT DHS", "[1234567890KS]*");
+		String suchstring = F + and(status, signatur, standortAnsetzung, sgg);
+		clip += suchstring + "\n";
+		System.out.println(suchstring);
+
 	}
 
 	private void berechneSatzarten() {

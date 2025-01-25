@@ -47,7 +47,7 @@ public class GUI extends JFrame {
 	private JMenuBar menuBar;
 	private JMenu mnMenu;
 	JMenuItem mntmInfo;
-	private JPanel panel_7;
+	private JPanel panel_9;
 	JCheckBox chckbxNeuansetzungen;
 	private JLabel lblBercksichtige;
 	JCheckBox chckbxMx;
@@ -56,8 +56,8 @@ public class GUI extends JFrame {
 	JCheckBox chckbxAutomSww;
 	JRadioButton rdbtnLeipzig;
 	JRadioButton rdbtnFrankfurt;
-	private JPanel panel_9;
-	private JPanel panel_10;
+	private JPanel panel_6;
+	private JPanel panel_7;
 	private JLabel lblStandort;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	JButton btnAbbruch;
@@ -66,9 +66,9 @@ public class GUI extends JFrame {
 	private JTextPane txtrMeineSachgruppen;
 	private JTextPane txtpnMeineGndSystematiknummern;
 	private JScrollPane scrollPane_1;
-	private JPanel panel_2;
-	JTextPane editorPaneSyst;
 	private JPanel panel_3;
+	JTextPane editorPaneSyst;
+	private JPanel panel_5;
 	private JLabel lblDatum;
 	JDateChooser dateChooserVon;
 	JLabel lblBis;
@@ -83,14 +83,14 @@ public class GUI extends JFrame {
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	private JLabel lblNormdaten;
 	private JLabel lblTiteldaten;
-	private JPanel panel_5;
+	private JPanel panel_2;
 	private JLabel lblKonfidenzwert;
 	JList<String> listKonfidenz;
 	JLabel lblVon;
 	JCheckBox chckbxAlleDaten;
-	private JPanel panel_6;
-	private JPanel panel_8;
-	private JPanel panel_11;
+	private JPanel panel_5a;
+	private JPanel panel_5aa;
+	private JPanel panel_5ab;
 	private JLabel lblNewLabel;
 	JButton btnReset;
 	JRadioButton rdbtnAlleStandorte;
@@ -104,13 +104,17 @@ public class GUI extends JFrame {
 	JButton btnCheckboxenReset;
 	JButton btnAlleCheckboxen;
 	JLabel label_2;
+	private JPanel panel_8;
+	private JLabel lblNichtFreigegebene;
+	JCheckBox chckbxSGFreigabe;
+	JCheckBox chckbxKeineSGFreigabe;
 
 	/**
 	 * Create the frame.
 	 */
 	public GUI() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(GUI.class.getResource(
-				"/de/dnb/ie/fachreferententool/200px-Meisterring_digital.png")));
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(GUI.class.getResource("/de/dnb/ie/fachreferententool/200px-Meisterring_digital.png")));
 		setLocation(new Point(500, 0));
 		initialize();
 	}
@@ -143,8 +147,7 @@ public class GUI extends JFrame {
 		panel_1.setLayout(new BorderLayout(0, 0));
 
 		txtrMeineSachgruppen = new JTextPane();
-		txtrMeineSachgruppen.setToolTipText(
-				"Wenn keine angegeben, wird, sofern möglich, nach allen gesucht.");
+		txtrMeineSachgruppen.setToolTipText("Wenn keine angegeben, wird, sofern möglich, nach allen gesucht.");
 		txtrMeineSachgruppen.setLocation(new Point(100, 20));
 		txtrMeineSachgruppen.setEditable(false);
 		panel_1.add(txtrMeineSachgruppen, BorderLayout.NORTH);
@@ -161,24 +164,21 @@ public class GUI extends JFrame {
 		listSGG.setVisibleRowCount(-1);
 		listSGG.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 
-		panel_5 = new JPanel();
-		final FlowLayout flowLayout_5 = (FlowLayout) panel_5.getLayout();
-		flowLayout_5.setAlignment(FlowLayout.LEFT);
-		contentPane.add(panel_5);
+		panel_2 = new JPanel();
+		final FlowLayout fl_panel_2 = (FlowLayout) panel_2.getLayout();
+		fl_panel_2.setAlignment(FlowLayout.LEFT);
+		contentPane.add(panel_2);
 
 		lblKonfidenzwert = new JLabel("Konfidenzwert:");
-		lblKonfidenzwert.setToolTipText(
-				"Wenn nichts selektiert, werden alle Konfidenzwerte berücksichtigt");
-		panel_5.add(lblKonfidenzwert);
+		lblKonfidenzwert.setToolTipText("Wenn nichts selektiert, werden alle Konfidenzwerte berücksichtigt");
+		panel_2.add(lblKonfidenzwert);
 
 		listKonfidenz = new JList();
-		listKonfidenz.setToolTipText(
-				"Wenn nichts selektiert, werden alle Konfidenzwerte berücksichtigt");
+		listKonfidenz.setToolTipText("Wenn nichts selektiert, werden alle Konfidenzwerte berücksichtigt");
 		listKonfidenz.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listKonfidenz.setVisibleRowCount(1);
 		listKonfidenz.setModel(new AbstractListModel() {
-			String[] values = new String[] { "0,6?     ", "0,7?", "0,8?",
-					"0,9?", "1,?" };
+			String[] values = new String[] { "0,6?     ", "0,7?", "0,8?", "0,9?", "1,?" };
 
 			@Override
 			public int getSize() {
@@ -192,22 +192,21 @@ public class GUI extends JFrame {
 		});
 		listKonfidenz.setMaximumSize(new Dimension(50, 10));
 		listKonfidenz.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		panel_5.add(listKonfidenz);
+		panel_2.add(listKonfidenz);
 
-		panel_2 = new JPanel();
-		contentPane.add(panel_2);
-		panel_2.setLayout(new BorderLayout(0, 0));
+		panel_3 = new JPanel();
+		contentPane.add(panel_3);
+		panel_3.setLayout(new BorderLayout(0, 0));
 
 		txtpnMeineGndSystematiknummern = new JTextPane();
 		txtpnMeineGndSystematiknummern.setEditable(false);
-		panel_2.add(txtpnMeineGndSystematiknummern, BorderLayout.NORTH);
+		panel_3.add(txtpnMeineGndSystematiknummern, BorderLayout.NORTH);
 		txtpnMeineGndSystematiknummern.setText(
 				"Meine GND- Systematiknummern.\r\nDurch Leerzeichen oder Zeilenumbruch trennen, Trunkierung möglich. Wenn keine angegeben sind, wird, sofern möglich, nach allen gesucht.");
 
 		scrollPane_1 = new JScrollPane();
-		panel_2.add(scrollPane_1, BorderLayout.CENTER);
-		scrollPane_1.setVerticalScrollBarPolicy(
-				ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		panel_3.add(scrollPane_1, BorderLayout.CENTER);
+		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
 		editorPaneSyst = new JTextPane();
 		scrollPane_1.setViewportView(editorPaneSyst);
@@ -218,21 +217,18 @@ public class GUI extends JFrame {
 		contentPane.add(panel_4);
 
 		lblMeineSatzarten = new JLabel("Meine Satzarten ");
-		lblMeineSatzarten.setToolTipText(
-				"Wenn nichts selektiert, werden alle Satzarten berücksichtigt");
+		lblMeineSatzarten.setToolTipText("Wenn nichts selektiert, werden alle Satzarten berücksichtigt");
 		lblMeineSatzarten.setFont(new Font("Tahoma", Font.BOLD, 11));
 		panel_4.add(lblMeineSatzarten);
 
 		listSatzart = new JList();
-		listSatzart.setToolTipText(
-				"Wenn nichts selektiert, werden alle Satzarten berücksichtigt");
+		listSatzart.setToolTipText("Wenn nichts selektiert, werden alle Satzarten berücksichtigt");
 		listSatzart.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		listSatzart.setVisibleRowCount(1);
 		listSatzart.setMaximumSize(new Dimension(50, 10));
 		listSatzart.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		listSatzart.setModel(new AbstractListModel() {
-			String[] values = new String[] { "Tb*   ", "Tf*", "Tg*", "Tp*",
-					"Ts*", "Tu*" };
+			String[] values = new String[] { "Tb*   ", "Tf*", "Tg*", "Tp*", "Ts*", "Tu*" };
 
 			@Override
 			public int getSize() {
@@ -246,166 +242,162 @@ public class GUI extends JFrame {
 		});
 		panel_4.add(listSatzart);
 
-		lblNewLabel = new JLabel(
-				" (selektiere mehrere mittels STRG-Klick)\r\n");
-		lblNewLabel.setToolTipText(
-				"Wenn nichts selektiert, werden alle Satzarten berücksichtigt");
+		lblNewLabel = new JLabel(" (selektiere mehrere mittels STRG-Klick)\r\n");
+		lblNewLabel.setToolTipText("Wenn nichts selektiert, werden alle Satzarten berücksichtigt");
 		panel_4.add(lblNewLabel);
 
-		panel_3 = new JPanel();
-		contentPane.add(panel_3);
-		panel_3.setLayout(new GridLayout(0, 5, 0, 0));
+		panel_5 = new JPanel();
+		contentPane.add(panel_5);
+		panel_5.setLayout(new GridLayout(0, 5, 0, 0));
 
 		lblDatum = new JLabel("berücksichtige Datum");
 		lblDatum.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblDatum.setHorizontalAlignment(SwingConstants.LEFT);
-		panel_3.add(lblDatum);
+		panel_5.add(lblDatum);
 
-		panel_6 = new JPanel();
-		panel_6.setMinimumSize(new Dimension(200, 10));
-		panel_3.add(panel_6);
-		panel_6.setLayout(new BoxLayout(panel_6, BoxLayout.Y_AXIS));
+		panel_5a = new JPanel();
+		panel_5a.setMinimumSize(new Dimension(200, 10));
+		panel_5.add(panel_5a);
+		panel_5a.setLayout(new BoxLayout(panel_5a, BoxLayout.Y_AXIS));
 
-		panel_8 = new JPanel();
-		panel_8.setMinimumSize(new Dimension(200, 10));
-		panel_6.add(panel_8);
-		panel_8.setLayout(new BoxLayout(panel_8, BoxLayout.X_AXIS));
+		panel_5aa = new JPanel();
+		panel_5aa.setMinimumSize(new Dimension(200, 10));
+		panel_5a.add(panel_5aa);
+		panel_5aa.setLayout(new BoxLayout(panel_5aa, BoxLayout.X_AXIS));
 
 		lblVon = new JLabel("von:  ");
-		panel_8.add(lblVon);
+		panel_5aa.add(lblVon);
 		lblVon.setHorizontalAlignment(SwingConstants.RIGHT);
 
 		dateChooserVon = new JDateChooser();
-		panel_8.add(dateChooserVon);
+		panel_5aa.add(dateChooserVon);
 		dateChooserVon.setMinimumSize(new Dimension(40, 20));
 
 		dateChooserBis = new JDateChooser();
-		panel_6.add(dateChooserBis);
+		panel_5a.add(dateChooserBis);
 		dateChooserBis.setMinimumSize(new Dimension(40, 20));
 
 		lblBis = new JLabel(" bis:  ");
 		dateChooserBis.add(lblBis, BorderLayout.WEST);
 		lblBis.setHorizontalAlignment(SwingConstants.RIGHT);
 
-		panel_11 = new JPanel();
-		panel_6.add(panel_11);
-		panel_11.setLayout(new BoxLayout(panel_11, BoxLayout.X_AXIS));
+		panel_5ab = new JPanel();
+		panel_5a.add(panel_5ab);
+		panel_5ab.setLayout(new BoxLayout(panel_5ab, BoxLayout.X_AXIS));
 
 		chckbxAlleDaten = new JCheckBox("alle");
 		chckbxAlleDaten.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_3.add(chckbxAlleDaten);
+		panel_5.add(chckbxAlleDaten);
 
-		panel_9 = new JPanel();
-		panel_9.setBorder(new LineBorder(new Color(0, 0, 0)));
-		contentPane.add(panel_9);
-		panel_9.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		panel_6 = new JPanel();
+		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPane.add(panel_6);
+		panel_6.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
 		lblStandort = new JLabel("Standort:");
 		lblStandort.setFont(new Font("Tahoma", Font.BOLD, 11));
-		panel_9.add(lblStandort);
+		panel_6.add(lblStandort);
 
 		rdbtnLeipzig = new JRadioButton("Leipzig");
 		buttonGroup.add(rdbtnLeipzig);
 		rdbtnLeipzig.setSelected(true);
-		panel_9.add(rdbtnLeipzig);
+		panel_6.add(rdbtnLeipzig);
 
 		rdbtnFrankfurt = new JRadioButton("Frankfurt");
 		buttonGroup.add(rdbtnFrankfurt);
-		panel_9.add(rdbtnFrankfurt);
+		panel_6.add(rdbtnFrankfurt);
 
 		rdbtnAlleStandorte = new JRadioButton("alle");
 		buttonGroup.add(rdbtnAlleStandorte);
-		panel_9.add(rdbtnAlleStandorte);
+		panel_6.add(rdbtnAlleStandorte);
 
 		label = new JLabel("                           ");
-		panel_9.add(label);
+		panel_6.add(label);
 
 		lblMailbox = new JLabel("Mailbox:");
 		lblMailbox.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		lblMailbox.setFont(new Font("Tahoma", Font.BOLD, 11));
-		panel_9.add(lblMailbox);
+		panel_6.add(lblMailbox);
 
 		rdbtnEmpfaenger = new JRadioButton("Empfänger");
 		buttonGroup_1.add(rdbtnEmpfaenger);
 		rdbtnEmpfaenger.setSelected(true);
-		panel_9.add(rdbtnEmpfaenger);
+		panel_6.add(rdbtnEmpfaenger);
 
 		rdbtnAbsender = new JRadioButton("Absender");
 		buttonGroup_1.add(rdbtnAbsender);
-		panel_9.add(rdbtnAbsender);
+		panel_6.add(rdbtnAbsender);
 
 		rdbtnAlleMx = new JRadioButton("alle");
 		buttonGroup_1.add(rdbtnAlleMx);
-		panel_9.add(rdbtnAlleMx);
+		panel_6.add(rdbtnAlleMx);
 
 		label_1 = new JLabel("                           ");
-		panel_9.add(label_1);
+		panel_6.add(label_1);
 
 		lblTeilbestand = new JLabel("Teilbestand: ");
 		lblTeilbestand.setFont(new Font("Tahoma", Font.BOLD, 11));
-		panel_9.add(lblTeilbestand);
+		panel_6.add(lblTeilbestand);
 
 		rdbtnSE = new JRadioButton("SE");
 		rdbtnSE.setSelected(true);
 		buttonGroup_2.add(rdbtnSE);
-		panel_9.add(rdbtnSE);
+		panel_6.add(rdbtnSE);
 
 		rdbtnFE = new JRadioButton("FE");
 		buttonGroup_2.add(rdbtnFE);
-		panel_9.add(rdbtnFE);
+		panel_6.add(rdbtnFE);
 
 		rdbtnAlleBestaende = new JRadioButton("alle");
 		buttonGroup_2.add(rdbtnAlleBestaende);
-		panel_9.add(rdbtnAlleBestaende);
+		panel_6.add(rdbtnAlleBestaende);
 
-		panel_10 = new JPanel();
-		final FlowLayout flowLayout_1 = (FlowLayout) panel_10.getLayout();
-		flowLayout_1.setAlignment(FlowLayout.LEFT);
-		contentPane.add(panel_10);
-		panel_10.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_7 = new JPanel();
+		final FlowLayout fl_panel_7 = (FlowLayout) panel_7.getLayout();
+		fl_panel_7.setAlignment(FlowLayout.LEFT);
+		contentPane.add(panel_7);
+		panel_7.setBorder(new LineBorder(new Color(0, 0, 0)));
 
 		lblBercksichtige = new JLabel("Berücksichtige");
 		lblBercksichtige.setHorizontalAlignment(SwingConstants.LEFT);
 		lblBercksichtige.setFont(new Font("Tahoma", Font.BOLD, 11));
-		panel_10.add(lblBercksichtige);
+		panel_7.add(lblBercksichtige);
 
 		lblNormdaten = new JLabel("            Normdaten:");
 		lblNormdaten.setFont(new Font("Tahoma", Font.BOLD, 11));
-		panel_10.add(lblNormdaten);
+		panel_7.add(lblNormdaten);
 
 		chckbxNeuansetzungen = new JCheckBox("Neuansetzungen");
-		chckbxNeuansetzungen.setToolTipText(
-				"Wird nicht ausgeführt, wenn \r\nkeine sinnvolle Suchfrage möglich.");
+		chckbxNeuansetzungen.setToolTipText("Wird nicht ausgeführt, wenn \r\nkeine sinnvolle Suchfrage möglich.");
 		chckbxNeuansetzungen.setSelected(true);
-		panel_10.add(chckbxNeuansetzungen);
+		panel_7.add(chckbxNeuansetzungen);
 
 		chckbxMx = new JCheckBox("mx");
 		chckbxMx.setToolTipText(
 				"Wird immer ausgeführt. Ohne weitere Angaben wird nach allen Mx gesucht,\r\ndie von/an DNB sind.");
 		chckbxMx.setSelected(true);
-		panel_10.add(chckbxMx);
+		panel_7.add(chckbxMx);
 
 		lblTiteldaten = new JLabel("         Titeldaten:");
 		lblTiteldaten.setFont(new Font("Tahoma", Font.BOLD, 11));
-		panel_10.add(lblTiteldaten);
+		panel_7.add(lblTiteldaten);
 
 		chckbxAutomSg = new JCheckBox("autom. SG");
 		chckbxAutomSg.setToolTipText(
 				"Wird immer ausgeführt. Im Extremfall wird nach allen Onlinepublikationen\r\nohne 5050 $Ei gesucht.");
 		chckbxAutomSg.setSelected(true);
-		panel_10.add(chckbxAutomSg);
+		panel_7.add(chckbxAutomSg);
 
 		chckbxZugewieseneTitel = new JCheckBox("mir zugeordnete Sachgruppe");
-		chckbxZugewieseneTitel.setToolTipText(
-				"Wird nicht ausgeführt, wenn keine Sachgruppen angegeben sind.");
+		chckbxZugewieseneTitel.setToolTipText("Wird nicht ausgeführt, wenn keine Sachgruppen angegeben sind.");
 		chckbxZugewieseneTitel.setSelected(true);
-		panel_10.add(chckbxZugewieseneTitel);
+		panel_7.add(chckbxZugewieseneTitel);
 
 		chckbxAutomSww = new JCheckBox("autom. SWW");
-		chckbxAutomSww.setToolTipText(
-				"Wird nicht ausgeführt, wenn keine Sachgruppen und kein Standort angegeben sind.");
+		chckbxAutomSww
+				.setToolTipText("Wird nicht ausgeführt, wenn keine Sachgruppen und kein Standort angegeben sind.");
 		chckbxAutomSww.setSelected(true);
-		panel_10.add(chckbxAutomSww);
+		panel_7.add(chckbxAutomSww);
 
 		btnCheckboxenReset = new JButton("alle löschen");
 		btnCheckboxenReset.addActionListener(new ActionListener() {
@@ -422,24 +414,37 @@ public class GUI extends JFrame {
 		});
 
 		label_2 = new JLabel("             ");
-		panel_10.add(label_2);
-		panel_10.add(btnAlleCheckboxen);
-		panel_10.add(btnCheckboxenReset);
+		panel_7.add(label_2);
+		panel_7.add(btnAlleCheckboxen);
+		panel_7.add(btnCheckboxenReset);
 
-		panel_7 = new JPanel();
-		contentPane.add(panel_7);
-		panel_7.setLayout(new GridLayout(0, 3, 0, 0));
+		panel_8 = new JPanel();
+		contentPane.add(panel_8);
+
+		lblNichtFreigegebene = new JLabel("Nicht freigegebene, aber magazinierte:");
+		lblNichtFreigegebene.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNichtFreigegebene.setFont(new Font("Tahoma", Font.BOLD, 11));
+		panel_8.add(lblNichtFreigegebene);
+
+		chckbxSGFreigabe = new JCheckBox("meine Sachgruppen");
+		panel_8.add(chckbxSGFreigabe);
+
+		chckbxKeineSGFreigabe = new JCheckBox("ohne Sachgruppe");
+		panel_8.add(chckbxKeineSGFreigabe);
+
+		panel_9 = new JPanel();
+		contentPane.add(panel_9);
+		panel_9.setLayout(new GridLayout(0, 3, 0, 0));
 
 		btnSuche = new JButton("Suchen und Kopieren");
-		btnSuche.setToolTipText(
-				"Schreibt die Suchfragen in die Zwischenablage");
-		panel_7.add(btnSuche);
+		btnSuche.setToolTipText("Schreibt die Suchfragen in die Zwischenablage");
+		panel_9.add(btnSuche);
 
 		btnAbbruch = new JButton("Abbruch");
-		panel_7.add(btnAbbruch);
+		panel_9.add(btnAbbruch);
 
 		btnReset = new JButton("Alle zurücksetzen");
-		panel_7.add(btnReset);
+		panel_9.add(btnReset);
 		btnSuche.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
