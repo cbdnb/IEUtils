@@ -1,28 +1,23 @@
 package de.dnb.ie.scrap;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
 import java.awt.BorderLayout;
-import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.JButton;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.JLabel;
-import java.awt.GridLayout;
-import javax.swing.JTextField;
-import javax.swing.AbstractAction;
-import java.awt.event.ActionEvent;
-import javax.swing.Action;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
-import java.awt.Rectangle;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 
 public class AutomatGUI {
 
@@ -34,23 +29,47 @@ public class AutomatGUI {
 	private static final Font FONT_B = new Font("Tahoma", Font.BOLD, 16);
 	private static final Font FONT_INFO = new Font("Tahoma", Font.PLAIN, 14);
 	private static final int FIELD_HEIGHT = 26;
-	private JFrame frmEinstellungenFrDatensatznderungen;
-	private JPasswordField passwordField;
-	private JTextField textField;
-	private JTextField textField_1;
+	JFrame frmEinstellungenFrDatensatznderungen;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
+
+	JCheckBox dummy;
+	JPasswordField passw;
+
+	JTextField f1_alttag;
+	JTextField f1_altinh;
+	JCheckBox f1_wdh;
+	JCheckBox f1_regex;
+	JRadioButton f1_neu;
+	JCheckBox f1_erster;
+	JTextField f1_trenner;
+	JRadioButton f1_ersetzen;
+	JTextField f1_neutag;
+	JTextField f1_neuinh;
+	JRadioButton f1_loeschen;
+
+	JTextField f2_alttag;
+	JTextField f2_altinh;
+	JCheckBox f2_wdh;
+	JCheckBox f2_regex;
+	JRadioButton f2_neu;
+	JCheckBox f2_erster;
+	JTextField f2_trenner;
+	JRadioButton f2_ersetzen;
+	JTextField f2_neutag;
+	JTextField f2_neuinh;
+	JRadioButton f2_loeschen;
+
+	JTextField fkoko_alttag;
+	JTextField fkoko_altinh;
+	JCheckBox fkoko_wdh;
+	JCheckBox fkoko_regex;
+	JRadioButton fkoko_neu;
+	JTextField fkoko_trenner;
+	JRadioButton fkoko_ersetzen;
+	JTextField fkoko_neutag;
+
+	private JButton btnOK;
+	private JButton btnAbbrechen;
 
 	/**
 	 * Launch the application.
@@ -102,15 +121,15 @@ public class AutomatGUI {
 		panel_allg.add(panel_allg_1);
 		panel_allg_1.setLayout(null);
 
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Dummy-Lauf");
-		chckbxNewCheckBox.setFont(FONT);
-		chckbxNewCheckBox.setBounds(SPALTE_3, 114, 248, 47);
-		panel_allg_1.add(chckbxNewCheckBox);
+		dummy = new JCheckBox("Dummy-Lauf");
+		dummy.setFont(FONT);
+		dummy.setBounds(SPALTE_3, 114, 248, 47);
+		panel_allg_1.add(dummy);
 
-		passwordField = new JPasswordField();
-		passwordField.setFont(FONT);
-		passwordField.setBounds(SPALTE_4, 58, 538, FIELD_HEIGHT);
-		panel_allg_1.add(passwordField);
+		passw = new JPasswordField();
+		passw.setFont(FONT);
+		passw.setBounds(SPALTE_4, 58, 538, FIELD_HEIGHT);
+		panel_allg_1.add(passw);
 
 		JLabel lblNewLabel = new JLabel("Passwort");
 		lblNewLabel.setFont(FONT);
@@ -134,26 +153,26 @@ public class AutomatGUI {
 		lblNewLabel_3_2.setBounds(21, 41, 318, 26);
 		panel_1_1.add(lblNewLabel_3_2);
 
-		textField_5 = new JTextField();
-		textField_5.setMaximumSize(new Dimension(100, 26));
-		textField_5.setFont(FONT);
-		textField_5.setBounds(45, 78, 65, 26);
-		panel_1_1.add(textField_5);
+		f1_alttag = new JTextField();
+		f1_alttag.setMaximumSize(new Dimension(100, 26));
+		f1_alttag.setFont(FONT);
+		f1_alttag.setBounds(45, 78, 65, 26);
+		panel_1_1.add(f1_alttag);
 
 		JLabel lblNewLabel_3_1_4 = new JLabel("Inhalt des 1. Ausgangsfeldes");
 		lblNewLabel_3_1_4.setFont(FONT);
 		lblNewLabel_3_1_4.setBounds(21, 114, 205, 26);
 		panel_1_1.add(lblNewLabel_3_1_4);
 
-		textField_6 = new JTextField();
-		textField_6.setFont(FONT);
-		textField_6.setBounds(45, 144, 1076, 26);
-		panel_1_1.add(textField_6);
+		f1_altinh = new JTextField();
+		f1_altinh.setFont(FONT);
+		f1_altinh.setBounds(45, 144, 1076, 26);
+		panel_1_1.add(f1_altinh);
 
-		JCheckBox chckbxNewCheckBox_1_2 = new JCheckBox("Feld ist wiederholbar");
-		chckbxNewCheckBox_1_2.setFont(FONT);
-		chckbxNewCheckBox_1_2.setBounds(21, 208, 175, 26);
-		panel_1_1.add(chckbxNewCheckBox_1_2);
+		f1_wdh = new JCheckBox("Feld ist wiederholbar");
+		f1_wdh.setFont(FONT);
+		f1_wdh.setBounds(21, 208, 175, 26);
+		panel_1_1.add(f1_wdh);
 
 		JPanel panel_1_2 = new JPanel();
 		panel_1_2.setLayout(null);
@@ -162,22 +181,21 @@ public class AutomatGUI {
 		panel_1_2.setBounds(0, 295, 1268, 410);
 		panel_1.add(panel_1_2);
 
-		JCheckBox chckbxNewCheckBox_1_1_2 = new JCheckBox("Regulärer Ausdruck");
-		chckbxNewCheckBox_1_1_2.setFont(FONT);
-		chckbxNewCheckBox_1_1_2.setBounds(21, 38, 163, 26);
-		panel_1_2.add(chckbxNewCheckBox_1_1_2);
+		f1_regex = new JCheckBox("Regulärer Ausdruck");
+		f1_regex.setFont(FONT);
+		f1_regex.setBounds(21, 38, 297, 26);
+		panel_1_2.add(f1_regex);
 
-		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("oben genannten Feldinhalt neu einfügen");
-		buttonGroup.add(rdbtnNewRadioButton_3);
-		rdbtnNewRadioButton_3.setFont(FONT_B);
-		rdbtnNewRadioButton_3.setBounds(21, 74, 531, 26);
-		panel_1_2.add(rdbtnNewRadioButton_3);
+		f1_neu = new JRadioButton("oben genannten Feldinhalt neu einfügen");
+		buttonGroup.add(f1_neu);
+		f1_neu.setFont(FONT_B);
+		f1_neu.setBounds(21, 74, 531, 26);
+		panel_1_2.add(f1_neu);
 
-		JCheckBox chckbxNewCheckBox_1_1_1_1 = new JCheckBox(
-				"Falls wiederholbar: Neues Feld als 1. Vorkommen des Feldes eintragen");
-		chckbxNewCheckBox_1_1_1_1.setFont(FONT);
-		chckbxNewCheckBox_1_1_1_1.setBounds(45, 102, 531, 26);
-		panel_1_2.add(chckbxNewCheckBox_1_1_1_1);
+		f1_erster = new JCheckBox("Falls wiederholbar: Neues Feld als 1. Vorkommen des Feldes eintragen");
+		f1_erster.setFont(FONT);
+		f1_erster.setBounds(45, 102, 531, 26);
+		panel_1_2.add(f1_erster);
 
 		JLabel lblNewLabel_3_1_1_1 = new JLabel(
 				"Falls nicht wiederholbar: Wenn anderer Inhalt vorhanden, neuen Inhalt mit folgendem Trennzeichen anhängen (sonst Fehlerdatei)");
@@ -185,43 +203,43 @@ public class AutomatGUI {
 		lblNewLabel_3_1_1_1.setBounds(45, 137, 930, 26);
 		panel_1_2.add(lblNewLabel_3_1_1_1);
 
-		textField_7 = new JTextField();
-		textField_7.setFont(FONT);
-		textField_7.setBounds(45, 167, 40, 26);
-		panel_1_2.add(textField_7);
+		f1_trenner = new JTextField();
+		f1_trenner.setFont(FONT);
+		f1_trenner.setBounds(45, 167, 40, 26);
+		panel_1_2.add(f1_trenner);
 
-		JRadioButton rdbtnNewRadioButton_1_1 = new JRadioButton("oben genannten Feldinhalt ersetzen durch:");
-		buttonGroup.add(rdbtnNewRadioButton_1_1);
-		rdbtnNewRadioButton_1_1.setFont(FONT_B);
-		rdbtnNewRadioButton_1_1.setBounds(21, 205, 415, 26);
-		panel_1_2.add(rdbtnNewRadioButton_1_1);
+		f1_ersetzen = new JRadioButton("oben genannten Feldinhalt ersetzen durch:");
+		buttonGroup.add(f1_ersetzen);
+		f1_ersetzen.setFont(FONT_B);
+		f1_ersetzen.setBounds(21, 205, 415, 26);
+		panel_1_2.add(f1_ersetzen);
 
 		JLabel lblNewLabel_3_1_2_1 = new JLabel("Feld:");
 		lblNewLabel_3_1_2_1.setFont(FONT);
 		lblNewLabel_3_1_2_1.setBounds(45, 230, 35, 26);
 		panel_1_2.add(lblNewLabel_3_1_2_1);
 
-		textField_8 = new JTextField();
-		textField_8.setMaximumSize(new Dimension(100, 26));
-		textField_8.setFont(FONT);
-		textField_8.setBounds(45, 260, 55, 26);
-		panel_1_2.add(textField_8);
+		f1_neutag = new JTextField();
+		f1_neutag.setMaximumSize(new Dimension(100, 26));
+		f1_neutag.setFont(FONT);
+		f1_neutag.setBounds(45, 260, 55, 26);
+		panel_1_2.add(f1_neutag);
 
 		JLabel lblNewLabel_3_1_3_1 = new JLabel("Feldinhalt:");
 		lblNewLabel_3_1_3_1.setFont(FONT);
 		lblNewLabel_3_1_3_1.setBounds(45, 287, 75, 26);
 		panel_1_2.add(lblNewLabel_3_1_3_1);
 
-		textField_9 = new JTextField();
-		textField_9.setFont(FONT);
-		textField_9.setBounds(45, 313, 1082, 26);
-		panel_1_2.add(textField_9);
+		f1_neuinh = new JTextField();
+		f1_neuinh.setFont(FONT);
+		f1_neuinh.setBounds(45, 313, 1082, 26);
+		panel_1_2.add(f1_neuinh);
 
-		JRadioButton rdbtnNewRadioButton_2_1 = new JRadioButton("Feld löschen");
-		buttonGroup.add(rdbtnNewRadioButton_2_1);
-		rdbtnNewRadioButton_2_1.setFont(FONT_B);
-		rdbtnNewRadioButton_2_1.setBounds(21, 350, 210, 26);
-		panel_1_2.add(rdbtnNewRadioButton_2_1);
+		f1_loeschen = new JRadioButton("Feld löschen");
+		buttonGroup.add(f1_loeschen);
+		f1_loeschen.setFont(FONT_B);
+		f1_loeschen.setBounds(21, 350, 210, 26);
+		panel_1_2.add(f1_loeschen);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setFont(FONT);
@@ -240,26 +258,26 @@ public class AutomatGUI {
 		lblNewLabel_3.setFont(FONT);
 		panel_2_1.add(lblNewLabel_3);
 
-		textField = new JTextField();
-		textField.setBounds(SPALTE_2, 78, 65, 26);
-		textField.setFont(FONT);
-		panel_2_1.add(textField);
-		textField.setMaximumSize(new Dimension(100, textField.getPreferredSize().height));
+		f2_alttag = new JTextField();
+		f2_alttag.setBounds(SPALTE_2, 78, 65, 26);
+		f2_alttag.setFont(FONT);
+		panel_2_1.add(f2_alttag);
+		f2_alttag.setMaximumSize(new Dimension(100, f2_alttag.getPreferredSize().height));
 
 		JLabel lblNewLabel_3_1 = new JLabel("Inhalt des 2. Ausgangsfeldes");
 		lblNewLabel_3_1.setBounds(SPALTE_1, 114, 205, FIELD_HEIGHT);
 		lblNewLabel_3_1.setFont(FONT);
 		panel_2_1.add(lblNewLabel_3_1);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(SPALTE_2, 144, 1076, FIELD_HEIGHT);
-		textField_1.setFont(FONT);
-		panel_2_1.add(textField_1);
+		f2_altinh = new JTextField();
+		f2_altinh.setBounds(SPALTE_2, 144, 1076, FIELD_HEIGHT);
+		f2_altinh.setFont(FONT);
+		panel_2_1.add(f2_altinh);
 
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Feld ist wiederholbar");
-		chckbxNewCheckBox_1.setBounds(SPALTE_1, 208, 175, FIELD_HEIGHT);
-		chckbxNewCheckBox_1.setFont(FONT);
-		panel_2_1.add(chckbxNewCheckBox_1);
+		f2_wdh = new JCheckBox("Feld ist wiederholbar");
+		f2_wdh.setBounds(SPALTE_1, 208, 175, FIELD_HEIGHT);
+		f2_wdh.setFont(FONT);
+		panel_2_1.add(f2_wdh);
 
 		JPanel panel_2_2 = new JPanel();
 		panel_2_2.setMaximumSize(new Dimension(32767, 27767));
@@ -267,22 +285,21 @@ public class AutomatGUI {
 		panel_2_2.setBorder(BorderFactory.createTitledBorder(null, "Aktion", 0, 0, FONT_INFO));
 		panel_2.add(panel_2_2);
 
-		JCheckBox chckbxNewCheckBox_1_1 = new JCheckBox("Regulärer Ausdruck");
-		chckbxNewCheckBox_1_1.setBounds(SPALTE_1, 38, 163, FIELD_HEIGHT);
-		chckbxNewCheckBox_1_1.setFont(FONT);
-		panel_2_2.add(chckbxNewCheckBox_1_1);
+		f2_regex = new JCheckBox("Regulärer Ausdruck");
+		f2_regex.setBounds(21, 38, 272, 26);
+		f2_regex.setFont(FONT);
+		panel_2_2.add(f2_regex);
 
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("oben genannten Feldinhalt neu einfügen");
-		rdbtnNewRadioButton.setBounds(21, 74, 452, 26);
-		rdbtnNewRadioButton.setFont(FONT_B);
-		buttonGroup.add(rdbtnNewRadioButton);
-		panel_2_2.add(rdbtnNewRadioButton);
+		f2_neu = new JRadioButton("oben genannten Feldinhalt neu einfügen");
+		f2_neu.setBounds(21, 74, 452, 26);
+		f2_neu.setFont(FONT_B);
+		buttonGroup.add(f2_neu);
+		panel_2_2.add(f2_neu);
 
-		JCheckBox chckbxNewCheckBox_1_1_1 = new JCheckBox(
-				"Falls wiederholbar: Neues Feld als 1. Vorkommen des Feldes eintragen");
-		chckbxNewCheckBox_1_1_1.setBounds(SPALTE_2, 102, 531, FIELD_HEIGHT);
-		chckbxNewCheckBox_1_1_1.setFont(FONT);
-		panel_2_2.add(chckbxNewCheckBox_1_1_1);
+		f2_erster = new JCheckBox("Falls wiederholbar: Neues Feld als 1. Vorkommen des Feldes eintragen");
+		f2_erster.setBounds(SPALTE_2, 102, 531, FIELD_HEIGHT);
+		f2_erster.setFont(FONT);
+		panel_2_2.add(f2_erster);
 
 		JLabel lblNewLabel_3_1_1 = new JLabel(
 				"Falls nicht wiederholbar: Wenn anderer Inhalt vorhanden, neuen Inhalt mit folgendem Trennzeichen anhängen (sonst Fehlerdatei)");
@@ -290,43 +307,43 @@ public class AutomatGUI {
 		lblNewLabel_3_1_1.setFont(FONT);
 		panel_2_2.add(lblNewLabel_3_1_1);
 
-		textField_2 = new JTextField();
-		textField_2.setBounds(SPALTE_2, 167, 40, FIELD_HEIGHT);
-		textField_2.setFont(FONT);
-		panel_2_2.add(textField_2);
+		f2_trenner = new JTextField();
+		f2_trenner.setBounds(SPALTE_2, 167, 40, FIELD_HEIGHT);
+		f2_trenner.setFont(FONT);
+		panel_2_2.add(f2_trenner);
 
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("oben genannten Feldinhalt ersetzen durch:");
-		rdbtnNewRadioButton_1.setBounds(21, 205, 400, 26);
-		rdbtnNewRadioButton_1.setFont(FONT_B);
-		buttonGroup.add(rdbtnNewRadioButton_1);
-		panel_2_2.add(rdbtnNewRadioButton_1);
+		f2_ersetzen = new JRadioButton("oben genannten Feldinhalt ersetzen durch:");
+		f2_ersetzen.setBounds(21, 205, 400, 26);
+		f2_ersetzen.setFont(FONT_B);
+		buttonGroup.add(f2_ersetzen);
+		panel_2_2.add(f2_ersetzen);
 
 		JLabel lblNewLabel_3_1_2 = new JLabel("Feld:");
 		lblNewLabel_3_1_2.setBounds(SPALTE_2, 230, 35, FIELD_HEIGHT);
 		lblNewLabel_3_1_2.setFont(FONT);
 		panel_2_2.add(lblNewLabel_3_1_2);
 
-		textField_3 = new JTextField();
-		textField_3.setBounds(SPALTE_2, 260, 55, 26);
-		textField_3.setMaximumSize(new Dimension(100, FIELD_HEIGHT));
-		textField_3.setFont(FONT);
-		panel_2_2.add(textField_3);
+		f2_neutag = new JTextField();
+		f2_neutag.setBounds(SPALTE_2, 260, 55, 26);
+		f2_neutag.setMaximumSize(new Dimension(100, FIELD_HEIGHT));
+		f2_neutag.setFont(FONT);
+		panel_2_2.add(f2_neutag);
 
 		JLabel lblNewLabel_3_1_3 = new JLabel("Feldinhalt:");
 		lblNewLabel_3_1_3.setBounds(SPALTE_2, 287, 75, FIELD_HEIGHT);
 		lblNewLabel_3_1_3.setFont(FONT);
 		panel_2_2.add(lblNewLabel_3_1_3);
 
-		textField_4 = new JTextField();
-		textField_4.setBounds(SPALTE_2, 313, 1082, FIELD_HEIGHT);
-		textField_4.setFont(FONT);
-		panel_2_2.add(textField_4);
+		f2_neuinh = new JTextField();
+		f2_neuinh.setBounds(SPALTE_2, 313, 1082, FIELD_HEIGHT);
+		f2_neuinh.setFont(FONT);
+		panel_2_2.add(f2_neuinh);
 
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Feld löschen");
-		rdbtnNewRadioButton_2.setBounds(21, 350, 257, 26);
-		rdbtnNewRadioButton_2.setFont(FONT_B);
-		buttonGroup.add(rdbtnNewRadioButton_2);
-		panel_2_2.add(rdbtnNewRadioButton_2);
+		f2_loeschen = new JRadioButton("Feld löschen");
+		f2_loeschen.setBounds(21, 350, 257, 26);
+		f2_loeschen.setFont(FONT_B);
+		buttonGroup.add(f2_loeschen);
+		panel_2_2.add(f2_loeschen);
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
@@ -345,26 +362,26 @@ public class AutomatGUI {
 		lblNewLabel_3_2_1.setBounds(20, 79, 318, 26);
 		panel_3_1.add(lblNewLabel_3_2_1);
 
-		textField_10 = new JTextField();
-		textField_10.setMaximumSize(new Dimension(100, 26));
-		textField_10.setFont(FONT);
-		textField_10.setBounds(44, 116, 65, 26);
-		panel_3_1.add(textField_10);
+		fkoko_alttag = new JTextField();
+		fkoko_alttag.setMaximumSize(new Dimension(100, 26));
+		fkoko_alttag.setFont(FONT);
+		fkoko_alttag.setBounds(44, 116, 65, 26);
+		panel_3_1.add(fkoko_alttag);
 
 		JLabel lblNewLabel_3_1_4_1 = new JLabel("Inhalt des Ausgangsfeldes");
 		lblNewLabel_3_1_4_1.setFont(FONT);
 		lblNewLabel_3_1_4_1.setBounds(20, 152, 205, 26);
 		panel_3_1.add(lblNewLabel_3_1_4_1);
 
-		textField_11 = new JTextField();
-		textField_11.setFont(FONT);
-		textField_11.setBounds(44, 182, 1076, 26);
-		panel_3_1.add(textField_11);
+		fkoko_altinh = new JTextField();
+		fkoko_altinh.setFont(FONT);
+		fkoko_altinh.setBounds(44, 182, 1076, 26);
+		panel_3_1.add(fkoko_altinh);
 
-		JCheckBox chckbxNewCheckBox_1_2_1 = new JCheckBox("Feld ist wiederholbar");
-		chckbxNewCheckBox_1_2_1.setFont(FONT);
-		chckbxNewCheckBox_1_2_1.setBounds(20, 246, 175, 26);
-		panel_3_1.add(chckbxNewCheckBox_1_2_1);
+		fkoko_wdh = new JCheckBox("Feld ist wiederholbar");
+		fkoko_wdh.setFont(FONT);
+		fkoko_wdh.setBounds(20, 246, 175, 26);
+		panel_3_1.add(fkoko_wdh);
 
 		JLabel lblNewLabel_1 = new JLabel(
 				"Hinzufügen von Feldinhalten über eine Konkordanz. Die Konkordanz muss zwei mit Tabulator getrennte Spalten enthalten: IDN - Feldinhalt");
@@ -379,17 +396,16 @@ public class AutomatGUI {
 		panel_3_2.setBounds(0, 295, 1268, 410);
 		panel_3.add(panel_3_2);
 
-		JCheckBox chckbxNewCheckBox_1_1_2_1 = new JCheckBox("Regulärer Ausdruck");
-		chckbxNewCheckBox_1_1_2_1.setFont(FONT);
-		chckbxNewCheckBox_1_1_2_1.setBounds(SPALTE_1, 38, 163, FIELD_HEIGHT);
-		panel_3_2.add(chckbxNewCheckBox_1_1_2_1);
+		fkoko_regex = new JCheckBox("Regulärer Ausdruck");
+		fkoko_regex.setFont(FONT);
+		fkoko_regex.setBounds(21, 38, 274, 26);
+		panel_3_2.add(fkoko_regex);
 
-		JRadioButton rdbtnNewRadioButton_3_1 = new JRadioButton(
-				"oben genanntes Feld mit neuem Inhalt aus Konkordanz neu einfügen");
-		buttonGroup.add(rdbtnNewRadioButton_3_1);
-		rdbtnNewRadioButton_3_1.setFont(FONT_B);
-		rdbtnNewRadioButton_3_1.setBounds(SPALTE_1, 105, 597, FIELD_HEIGHT);
-		panel_3_2.add(rdbtnNewRadioButton_3_1);
+		fkoko_neu = new JRadioButton("oben genanntes Feld mit neuem Inhalt aus Konkordanz neu einfügen");
+		buttonGroup.add(fkoko_neu);
+		fkoko_neu.setFont(FONT_B);
+		fkoko_neu.setBounds(SPALTE_1, 105, 597, FIELD_HEIGHT);
+		panel_3_2.add(fkoko_neu);
 
 		JLabel lblNewLabel_3_1_1_1_1 = new JLabel(
 				"Falls nicht wiederholbar: Wenn anderer Inhalt vorhanden, neuen Inhalt mit folgendem Trennzeichen anhängen (sonst Fehlerdatei)");
@@ -397,37 +413,36 @@ public class AutomatGUI {
 		lblNewLabel_3_1_1_1_1.setBounds(SPALTE_2, 137, 930, FIELD_HEIGHT);
 		panel_3_2.add(lblNewLabel_3_1_1_1_1);
 
-		textField_12 = new JTextField();
-		textField_12.setFont(FONT);
-		textField_12.setBounds(SPALTE_2, 167, 40, FIELD_HEIGHT);
-		panel_3_2.add(textField_12);
+		fkoko_trenner = new JTextField();
+		fkoko_trenner.setFont(FONT);
+		fkoko_trenner.setBounds(SPALTE_2, 167, 40, FIELD_HEIGHT);
+		panel_3_2.add(fkoko_trenner);
 
-		JRadioButton rdbtnNewRadioButton_1_1_1 = new JRadioButton(
-				"oben genannten Feldinhalt ersetzen durch Feld und Inhalt der Konkordanz:");
-		buttonGroup.add(rdbtnNewRadioButton_1_1_1);
-		rdbtnNewRadioButton_1_1_1.setFont(FONT_B);
-		rdbtnNewRadioButton_1_1_1.setBounds(21, 205, 639, 26);
-		panel_3_2.add(rdbtnNewRadioButton_1_1_1);
+		fkoko_ersetzen = new JRadioButton("oben genannten Feldinhalt ersetzen durch Feld und Inhalt der Konkordanz:");
+		buttonGroup.add(fkoko_ersetzen);
+		fkoko_ersetzen.setFont(FONT_B);
+		fkoko_ersetzen.setBounds(21, 205, 639, 26);
+		panel_3_2.add(fkoko_ersetzen);
 
 		JLabel lblNewLabel_3_1_2_1_1 = new JLabel("Feld:");
 		lblNewLabel_3_1_2_1_1.setFont(FONT);
 		lblNewLabel_3_1_2_1_1.setBounds(SPALTE_2, 230, 35, FIELD_HEIGHT);
 		panel_3_2.add(lblNewLabel_3_1_2_1_1);
 
-		textField_13 = new JTextField();
-		textField_13.setMaximumSize(new Dimension(100, 26));
-		textField_13.setFont(FONT);
-		textField_13.setBounds(SPALTE_2, 260, 339, FIELD_HEIGHT);
-		panel_3_2.add(textField_13);
+		fkoko_neutag = new JTextField();
+		fkoko_neutag.setMaximumSize(new Dimension(100, 26));
+		fkoko_neutag.setFont(FONT);
+		fkoko_neutag.setBounds(SPALTE_2, 260, 339, FIELD_HEIGHT);
+		panel_3_2.add(fkoko_neutag);
 
 		JPanel panel = new JPanel();
 		frmEinstellungenFrDatensatznderungen.getContentPane().add(panel, BorderLayout.SOUTH);
 
-		JButton btnOK = new JButton("OK");
+		btnOK = new JButton("OK");
 		btnOK.setFont(FONT);
 		panel.add(btnOK);
 
-		JButton btnAbbrechen = new JButton("Abbrechen");
+		btnAbbrechen = new JButton("Abbrechen");
 		btnAbbrechen.setFont(FONT);
 		btnAbbrechen.addActionListener(a -> System.exit(0));
 		panel.add(btnAbbrechen);
