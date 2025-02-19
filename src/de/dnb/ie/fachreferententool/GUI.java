@@ -108,6 +108,9 @@ public class GUI extends JFrame {
 	private JLabel lblNichtFreigegebene;
 	JCheckBox chckbxSGFreigabe;
 	JCheckBox chckbxKeineSGFreigabe;
+	private JLabel lblNichtFreigegebene_1;
+	JCheckBox chckbxSGFreigabeReihe;
+	JCheckBox chckbxKeineSGFreigabeReihe;
 
 	/**
 	 * Create the frame.
@@ -431,6 +434,17 @@ public class GUI extends JFrame {
 
 		chckbxKeineSGFreigabe = new JCheckBox("ohne Sachgruppe");
 		panel_8.add(chckbxKeineSGFreigabe);
+		
+		lblNichtFreigegebene_1 = new JLabel("Nicht freigegebene Reihe:");
+		lblNichtFreigegebene_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNichtFreigegebene_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		panel_8.add(lblNichtFreigegebene_1);
+		
+		chckbxSGFreigabeReihe = new JCheckBox("meine Sachgruppen");
+		panel_8.add(chckbxSGFreigabeReihe);
+		
+		chckbxKeineSGFreigabeReihe = new JCheckBox("ohne Sachgruppe");
+		panel_8.add(chckbxKeineSGFreigabeReihe);
 
 		panel_9 = new JPanel();
 		contentPane.add(panel_9);

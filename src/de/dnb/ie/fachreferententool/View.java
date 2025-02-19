@@ -94,6 +94,8 @@ public class View {
 		gui.chckbxAutomSww.setSelected(select);
 		gui.chckbxKeineSGFreigabe.setSelected(select);
 		gui.chckbxSGFreigabe.setSelected(select);
+		gui.chckbxKeineSGFreigabeReihe.setSelected(select);
+		gui.chckbxSGFreigabeReihe.setSelected(select);
 	}
 
 	public final void addSucheListener(final ActionListener al) {
@@ -221,6 +223,14 @@ public class View {
 	public boolean useOhneSGGFreigeben() {
 		return gui.chckbxKeineSGFreigabe.isSelected();
 	}
+	
+	public boolean useSGGFreigebenReihe() {
+		return gui.chckbxSGFreigabeReihe.isSelected();
+	}
+
+	public boolean useOhneSGGFreigebenReihe() {
+		return gui.chckbxKeineSGFreigabeReihe.isSelected();
+	}
 
 	public void setNeuansetzungen(boolean val) {
 		SwingUtilities.invokeLater(() -> gui.chckbxNeuansetzungen.setSelected(val));
@@ -249,6 +259,8 @@ public class View {
 	public void setOhneSGGFreigabe(boolean val) {
 		SwingUtilities.invokeLater(() -> gui.chckbxKeineSGFreigabe.setSelected(val));
 	}
+	
+	
 
 	// --------------------------------------------------
 

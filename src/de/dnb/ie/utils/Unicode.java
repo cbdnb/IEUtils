@@ -11,7 +11,6 @@ public class Unicode {
 	public static void main(String[] args) {
 		String s = StringUtils.readClipboard();
 		StringUtils.writeToClipboard(StringUtils.unicodeComposition(s));
-
 	}
 
 }

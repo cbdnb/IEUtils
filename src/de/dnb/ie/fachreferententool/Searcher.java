@@ -153,7 +153,7 @@ public class Searcher {
 	 * 
 	 * @param indextyp nicht null
 	 * @param suchbegriff auch null
-	 * @return Phrase wie "(dhs 510 or 520)" oder null
+	 * @return Phrase wie "(dhs 510 or 520)" immer in Klammern oder null
 	 */
 	private String machSuchFragment(String indextyp, String suchbegriff) {
 		if (suchbegriff == null)
@@ -341,6 +341,12 @@ public class Searcher {
 		if (view.useOhneSGGFreigeben()) {
 			imMagazinOhneFreigabe(false);
 		}
+		if (view.useSGGFreigebenReihe()) {
+			reiheOhneFreigabe(true);
+		}
+		if (view.useOhneSGGFreigebenReihe()) {
+			reiheOhneFreigabe(false);
+		}
 		if (!clip.isEmpty()) {
 			StringUtils.writeToClipboard(clip);
 		}
@@ -350,11 +356,37 @@ public class Searcher {
 		String status = machSuchFragment("sta", "2#-##-## b");
 		String signatur = machSuchFragment("sig", "[2#]*");
 		String sgg;
-		if (mitSGG)
+		if (mitSGG) {
 			sgg = machSuchFragment("DHS", or(view.getSGG()));
-		else
+		} else {
 			sgg = machSuchFragment("NOT DHS", "[1234567890KS]*");
+		}
 		String suchstring = F + and(status, signatur, standortAnsetzung, sgg);
+		clip += suchstring + "\n";
+		System.out.println(suchstring);
+
+	}
+
+	private void reiheOhneFreigabe(boolean mitSGG) {
+		int lastDigit = TimeUtils.getActualYear() % 10;
+		String years = "[";
+		for (int i = lastDigit - 3; i < lastDigit; i++) {
+			years += (i + 10) % 10;
+		}
+		years += "]";
+		String status = machSuchFragment("sta", "2" + years + "?b");
+		String bbg = machSuchFragment("bbg", "[^]*vz");
+		String sgg;
+		if (mitSGG) {
+			String dcz = machSuchFragment("DCZ", or(view.getSGG()));
+			String dhs = machSuchFragment("DHS", or(view.getSGG()));
+			sgg = "(" + or(Arrays.asList(dcz, dhs)) + ")";
+		} else {
+			String notdcz = machSuchFragment("NOT DCZ", "[1234567890KS]*");
+			String notdhs = machSuchFragment("NOT DHS", "[1234567890KS]*");
+			sgg = and(notdcz, notdhs);
+		}
+		String suchstring = F + and(status, bbg, standortAnsetzung, sgg);
 		clip += suchstring + "\n";
 		System.out.println(suchstring);
 
