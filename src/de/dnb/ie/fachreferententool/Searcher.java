@@ -39,6 +39,12 @@ public class Searcher {
 	 * "f", "l" oder "?"
 	 */
 	private String standortZugew;
+	
+	/**
+	 * dke 12[34]?  oder 11[34]?
+	 */
+	private String standortReihe;
+	
 	/**
 	 * "(sn 21.2 OR 21.3)" oder null
 	 */
@@ -55,7 +61,7 @@ public class Searcher {
 	 * Datum der Beschlagwortung, auch null, wenn alle Daten verwendet werden.
 	 */
 	private String dsw;
-	private String clip = "";
+	private String clip = "";	
 	private static final String F = "f ";
 
 	public Searcher(View view) {
@@ -66,18 +72,6 @@ public class Searcher {
 	 * wird nicht ausgeführt, wenn keine sinnvolle Suchfrage möglich.
 	 */
 	private void neuansetzungen() {
-		String phrase = and(gndSystematik, ser, tbs, satzarten, standortAnsetzung);
-		if (phrase == null)
-			return;
-		String suchstring = F + phrase;
-		clip += suchstring + "\n";
-		System.out.println(suchstring);
-	}
-
-	/**
-	 * wird nicht ausgeführt, wenn keine sinnvolle Suchfrage möglich.
-	 */
-	private void magazinOhneFreigabeSGG() {
 		String phrase = and(gndSystematik, ser, tbs, satzarten, standortAnsetzung);
 		if (phrase == null)
 			return;
@@ -205,20 +199,24 @@ public class Searcher {
 		case FRANKFURT:
 			standortAnsetzung = "NOT ser 11##";
 			standortZugew = standortMx = "f";
+			standortReihe = "dke 12[34]?";
 			break;
 		case LEIPZIG:
 			standortAnsetzung = "NOT ser 12##";
 			standortZugew = standortMx = "l";
+			standortReihe = "dke 11[34]?";
 			break;
 		case ALLE:
 			standortAnsetzung = null;
 			standortMx = "";
 			standortZugew = "?";
+			standortReihe = null;
 			break;
 		default:
 			standortAnsetzung = null;
 			standortMx = "";
 			standortZugew = "?";
+			standortReihe = null;
 			break;
 		}
 	}
@@ -386,7 +384,7 @@ public class Searcher {
 			String notdhs = machSuchFragment("NOT DHS", "[1234567890KS]*");
 			sgg = and(notdcz, notdhs);
 		}
-		String suchstring = F + and(status, bbg, standortAnsetzung, sgg);
+		String suchstring = F + and(status, bbg, standortReihe, sgg);
 		clip += suchstring + "\n";
 		System.out.println(suchstring);
 

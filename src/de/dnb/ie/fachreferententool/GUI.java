@@ -298,7 +298,7 @@ public class GUI extends JFrame {
 		panel_6.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
 		lblStandort = new JLabel("Standort:");
-		lblStandort.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblStandort.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panel_6.add(lblStandort);
 
 		rdbtnLeipzig = new JRadioButton("Leipzig");
@@ -319,7 +319,7 @@ public class GUI extends JFrame {
 
 		lblMailbox = new JLabel("Mailbox:");
 		lblMailbox.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		lblMailbox.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblMailbox.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panel_6.add(lblMailbox);
 
 		rdbtnEmpfaenger = new JRadioButton("Empfänger");
@@ -339,7 +339,7 @@ public class GUI extends JFrame {
 		panel_6.add(label_1);
 
 		lblTeilbestand = new JLabel("Teilbestand: ");
-		lblTeilbestand.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblTeilbestand.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panel_6.add(lblTeilbestand);
 
 		rdbtnSE = new JRadioButton("SE");
@@ -363,7 +363,7 @@ public class GUI extends JFrame {
 
 		lblBercksichtige = new JLabel("Berücksichtige");
 		lblBercksichtige.setHorizontalAlignment(SwingConstants.LEFT);
-		lblBercksichtige.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblBercksichtige.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panel_7.add(lblBercksichtige);
 
 		lblNormdaten = new JLabel("            Normdaten:");
@@ -426,7 +426,7 @@ public class GUI extends JFrame {
 
 		lblNichtFreigegebene = new JLabel("Nicht freigegebene, aber magazinierte:");
 		lblNichtFreigegebene.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNichtFreigegebene.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNichtFreigegebene.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panel_8.add(lblNichtFreigegebene);
 
 		chckbxSGFreigabe = new JCheckBox("meine Sachgruppen");
@@ -437,7 +437,7 @@ public class GUI extends JFrame {
 		
 		lblNichtFreigegebene_1 = new JLabel("Nicht freigegebene Reihe:");
 		lblNichtFreigegebene_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNichtFreigegebene_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNichtFreigegebene_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panel_8.add(lblNichtFreigegebene_1);
 		
 		chckbxSGFreigabeReihe = new JCheckBox("meine Sachgruppen");
