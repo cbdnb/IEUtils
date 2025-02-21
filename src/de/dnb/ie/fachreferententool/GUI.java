@@ -436,14 +436,17 @@ public class GUI extends JFrame {
 		panel_8.add(chckbxKeineSGFreigabe);
 		
 		lblNichtFreigegebene_1 = new JLabel("Nicht freigegebene Reihe:");
+		lblNichtFreigegebene_1.setToolTipText("Die vorletzten 3 Jahre");
 		lblNichtFreigegebene_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNichtFreigegebene_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panel_8.add(lblNichtFreigegebene_1);
 		
 		chckbxSGFreigabeReihe = new JCheckBox("meine Sachgruppen");
+		chckbxSGFreigabeReihe.setToolTipText("Sucht nach Feld 5050 oder 5080");
 		panel_8.add(chckbxSGFreigabeReihe);
 		
 		chckbxKeineSGFreigabeReihe = new JCheckBox("ohne Sachgruppe");
+		chckbxKeineSGFreigabeReihe.setToolTipText("Kein Feld 5050 oder 5080");
 		panel_8.add(chckbxKeineSGFreigabeReihe);
 
 		panel_9 = new JPanel();
