@@ -351,7 +351,8 @@ public class Searcher {
 	}
 
 	private void imMagazinOhneFreigabe(boolean mitSGG) {
-		String status = machSuchFragment("sta", "2#-##-## b");
+		String years = macheVorjahre();
+		String status = machSuchFragment("sta", "2" + years + "?b");
 		String signatur = machSuchFragment("sig", "[2#]*");
 		String sgg;
 		if (mitSGG) {
@@ -366,12 +367,7 @@ public class Searcher {
 	}
 
 	private void reiheOhneFreigabe(boolean mitSGG) {
-		int lastDigit = TimeUtils.getActualYear() % 10;
-		String years = "[";
-		for (int i = lastDigit - 3; i < lastDigit; i++) {
-			years += (i + 10) % 10;
-		}
-		years += "]";
+		String years = macheVorjahre();
 		String status = machSuchFragment("sta", "2" + years + "?b");
 		String bbg = machSuchFragment("bbg", "[^]*vz");
 		String sgg;
@@ -388,6 +384,20 @@ public class Searcher {
 		clip += suchstring + "\n";
 		System.out.println(suchstring);
 
+	}
+
+	/**
+	 * 
+	 * @return "[01234], auf jeden Fall die 4 letzten Vorjahre
+	 */
+	private String macheVorjahre() {
+		int lastDigit = TimeUtils.getActualYear() % 10;
+		String years = "[";
+		for (int i = lastDigit - 4; i < lastDigit; i++) {
+			years += (i + 10) % 10;
+		}
+		years += "]";
+		return years;
 	}
 
 	private void berechneSatzarten() {
