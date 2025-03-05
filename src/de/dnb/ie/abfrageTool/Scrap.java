@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.dnb.ie.fachreferententool;
+package de.dnb.ie.abfrageTool;
 
 /**
  * @author baumann

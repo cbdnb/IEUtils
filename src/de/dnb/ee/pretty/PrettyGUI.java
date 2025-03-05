@@ -78,10 +78,11 @@ public class PrettyGUI {
 				BorderLayout.CENTER);
 		frmDatensatzDrucken.setAlwaysOnTop(true);
 
-		if (DEBUG)
+		if (DEBUG) {
 			formatter.setFontsize(16);
-		else
+		} else {
 			formatter.setFontsize(10);
+		}
 		formatter.setBorder(0);
 		formatter.setSpacing(-3);
 		formatter.setWidth(100);
@@ -96,7 +97,7 @@ public class PrettyGUI {
 
 	final HTMLFormatter formatter = new HTMLFormatter();
 
-	private class MyActionListener implements ActionListener {
+	private final class MyActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
 			// frame.toFront();
@@ -117,14 +118,16 @@ public class PrettyGUI {
 
 			String txt = formatter.format(record);
 			txt += "<br>";
-			if (DEBUG)
+			if (DEBUG) {
 				OutputUtils.show(txt);
-			else
+			}
+			else {
 				try {
 					OutputUtils.printWithoutDialog(txt);
 				} catch (final PrinterException ex) {
 				}
 			// frame.toBack();
+			}
 		}
 	}
 }

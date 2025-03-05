@@ -129,10 +129,10 @@
 				<attribute name="Main-Class" value="de.dnb.ie.search.SearchController" />
 			</manifest>
 		</jar>
-		<jar destfile="${release.dir}/Fachreferenten.jar">
+		<jar destfile="${release.dir}/abfrage.jar">
 			<fileset dir="${build.dir}" excludes="**/*Test.class, **/Test*.class" />
 			<manifest>
-				<attribute name="Main-Class" value="de.dnb.ie.fachreferententool.Controller" />
+				<attribute name="Main-Class" value="de.dnb.ie.abfrageTool.Controller" />
 				<attribute name="Class-Path" value="lib/GND.jar lib/jcalendar-1.4.jar" />
 			</manifest>
 		</jar>

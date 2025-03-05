@@ -1,4 +1,4 @@
-package de.dnb.ie.fachreferententool;
+package de.dnb.ie.abfrageTool;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -117,13 +117,13 @@ public class GUI extends JFrame {
 	 */
 	public GUI() {
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(GUI.class.getResource("/de/dnb/ie/fachreferententool/200px-Meisterring_digital.png")));
+				.getImage(GUI.class.getResource("/de/dnb/ie/abfrageTool/200px-Meisterring_digital.png")));
 		setLocation(new Point(500, 0));
 		initialize();
 	}
 
 	private void initialize() {
-		setTitle("Fachreferenten-Tool");
+		setTitle("Abfrage-Tool");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1177, 711);
 

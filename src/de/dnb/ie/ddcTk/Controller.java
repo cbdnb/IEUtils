@@ -26,7 +26,7 @@ public class Controller {
 	private static final String INFILE = Constants.DDC_XML;
 	View view;
 
-	private class DDCActionListener implements ActionListener {
+	private final class DDCActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
 			final String ddc = view.getDDC();

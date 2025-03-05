@@ -1,4 +1,4 @@
-package de.dnb.ie.fachreferententool;
+package de.dnb.ie.abfrageTool;
 
 import java.awt.event.ActionListener;
 import java.util.Arrays;

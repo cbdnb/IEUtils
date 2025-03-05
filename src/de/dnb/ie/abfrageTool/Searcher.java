@@ -1,4 +1,4 @@
-package de.dnb.ie.fachreferententool;
+package de.dnb.ie.abfrageTool;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,10 +7,9 @@ import java.util.Collection;
 import java.util.List;
 
 import de.dnb.basics.applicationComponents.strings.StringUtils;
-import de.dnb.basics.collections.ListUtils;
 import de.dnb.basics.filtering.FilterUtils;
 import de.dnb.basics.utils.TimeUtils;
-import de.dnb.ie.fachreferententool.View.TEILBESTAND;
+import de.dnb.ie.abfrageTool.View.TEILBESTAND;
 
 public class Searcher {
 
@@ -39,12 +38,12 @@ public class Searcher {
 	 * "f", "l" oder "?"
 	 */
 	private String standortZugew;
-	
+
 	/**
-	 * dke 12[34]?  oder 11[34]?
+	 * dke 12[34]? oder 11[34]?
 	 */
 	private String standortReihe;
-	
+
 	/**
 	 * "(sn 21.2 OR 21.3)" oder null
 	 */
@@ -61,7 +60,7 @@ public class Searcher {
 	 * Datum der Beschlagwortung, auch null, wenn alle Daten verwendet werden.
 	 */
 	private String dsw;
-	private String clip = "";	
+	private String clip = "";
 	private static final String F = "f ";
 
 	public Searcher(View view) {
@@ -270,7 +269,7 @@ public class Searcher {
 	 * @param strings auch leer
 	 * @return null, wenn Liste von nullen
 	 */
-	private String and(String... strings) {
+	private String and(final String... strings) {
 		return and(new ArrayList<>(Arrays.asList(strings)));
 	}
 

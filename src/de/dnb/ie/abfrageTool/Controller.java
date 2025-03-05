@@ -1,4 +1,4 @@
-package de.dnb.ie.fachreferententool;
+package de.dnb.ie.abfrageTool;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,9 +11,8 @@ import java.util.Properties;
 import javax.swing.SwingUtilities;
 
 import de.dnb.basics.utils.OutputUtils;
-import de.dnb.basics.utils.TimeUtils;
 
-public class Controller {
+public final class Controller {
 
 	private static final String SGG = "sgg";
 
@@ -138,7 +137,7 @@ public class Controller {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param propertyStr
 	 * @return property oder null
 	 */
