@@ -21,6 +21,8 @@ public final class Controller {
 	private static final String SATZARTEN = "satzarten";
 
 	private static final String STANDORT = "standort";
+	
+	private static final String ADRESSIERUNG = "adressierung";
 
 	private static final String TEILBEST = "teilbestand";
 
@@ -69,7 +71,10 @@ public final class Controller {
 			view.setSatzartIndices(satzartIndices);
 		String standort = getValueFromProperties(STANDORT);
 		if (standort != null)
-			view.setStandort(standort);
+			view.setStandort(standort);		
+		String addr = getValueFromProperties(ADRESSIERUNG);
+		if (addr != null)
+			view.setAdressierung(addr);		
 		String tbs = getValueFromProperties(TEILBEST);
 		if (tbs != null)
 			view.setTeilbestand(tbs);
@@ -89,6 +94,7 @@ public final class Controller {
 			saveValueInProperties(SYSTEMATIK, view.getSystString());
 			saveValueInProperties(SGG, view.getSGIndices());
 			saveValueInProperties(STANDORT, view.getStandort().toString());
+			saveValueInProperties(ADRESSIERUNG, view.getAdressierung().toString());
 			saveValueInProperties(SATZARTEN, view.getSatzartenIndicesString());
 			saveValueInProperties(TEILBEST, view.getTeilbestand().toString());
 

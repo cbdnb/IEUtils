@@ -144,7 +144,7 @@ public class View {
 			return STANDORT.ALLE;
 	}
 
-	public void setStandort(String std) {
+	public void setStandort(String std) {		
 		if (std.equals("FRANKFURT")) {
 			SwingUtilities.invokeLater(() -> gui.rdbtnFrankfurt.setSelected(true));
 		} else if (std.equals("LEIPZIG")) {
@@ -167,6 +167,16 @@ public class View {
 			return ADRESSIERUNG.EMPFAENGER;
 		else
 			return ADRESSIERUNG.ALLE;
+	}
+	
+	public void setAdressierung(String addr) {
+		if (addr.equals("ABSENDER")) {
+			SwingUtilities.invokeLater(() -> gui.rdbtnAbsender.setSelected(true));
+		} else if (addr.equals("EMPFAENGER")) {
+			SwingUtilities.invokeLater(() -> gui.rdbtnEmpfaenger.setSelected(true));
+		} else {
+			SwingUtilities.invokeLater(() -> gui.rdbtnAlleMx.setSelected(true));
+		}
 	}
 
 	// -------------------------------
