@@ -161,7 +161,7 @@ public class Searcher {
 	private void automSGG() {
 		String bbg = "bbg oa?";
 
-		String konfidenz = view.getKonfidenzwert();
+		
 
 		List<String> sgg = view.getSGG();
 		ArrayList<String> msgg = FilterUtils.map(sgg, sg -> "m" + sg);
@@ -169,7 +169,7 @@ public class Searcher {
 
 		String notEfa = "not efa i ";
 
-		String suchstring = F + and(bbg, ser, konfidenz, efa, standortAnsetzung, notEfa);
+		String suchstring = F + and(bbg, ser, efa, standortAnsetzung, notEfa);
 		clip += suchstring + "\n";
 		System.out.println(suchstring);
 	}
