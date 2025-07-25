@@ -134,7 +134,8 @@ public class Gesamtbewertung {
 		btnKeinebernahmeAus.setBounds(24, 106, 244, 23);
 		frmGesamtbewertung.getContentPane().add(btnKeinebernahmeAus);
 
-		JLabel lblMitEinemEintrag = new JLabel("Mit einem Eintrag in 4700 die Übernahme aus Culturegraph verhindern:");
+		JLabel lblMitEinemEintrag = new JLabel("Mit einem Eintrag in 4700 die Übernahme "
+				+ "aus Culturegraph verhindern:");
 		lblMitEinemEintrag.setHorizontalAlignment(SwingConstants.LEFT);
 		lblMitEinemEintrag.setBounds(25, 82, 419, 20);
 		frmGesamtbewertung.getContentPane().add(lblMitEinemEintrag);
