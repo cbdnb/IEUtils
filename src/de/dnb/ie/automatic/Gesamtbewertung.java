@@ -119,7 +119,8 @@ public class Gesamtbewertung {
 		btnKeineErschliessung.setBounds(268, 180, 216, 23);
 		frmGesamtbewertung.getContentPane().add(btnKeineErschliessung);
 
-		lblNewLabel = new JLabel("Grund für den Ausschluss aus QM (Eventuelle Kommentare werden übernommen):");
+		lblNewLabel = new JLabel("Grund für den Ausschluss aus QM "
+				+ "(Eventuelle Kommentare werden übernommen):");
 		lblNewLabel.setBounds(25, 160, 444, 20);
 		frmGesamtbewertung.getContentPane().add(lblNewLabel);
 
