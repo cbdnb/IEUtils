@@ -62,7 +62,7 @@ public class GUI extends JFrame {
 				final String ddc = textFieldDDC.getText();
 				DDC_SG sg = null;
 				try {
-					sg = SGUtils.getSG(ddc);
+					sg = SGUtils.ddc2sg(ddc);
 				} catch (final IllegalArgumentException e1) {
 					textFieldSG.setText(e1.getMessage());
 					return;
